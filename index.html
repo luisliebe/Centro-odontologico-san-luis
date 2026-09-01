@@ -4,60 +4,131 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Centro Odontológico San Luis</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;padding-bottom:85px;font-family:Arial,sans-serif;background:#edf2f5;color:#263238}
 header{background:linear-gradient(135deg,#17252b,#455a64,#78909c);color:white;text-align:center;padding:28px 15px}
-header h1{margin:0;font-size:30px} header h1 span{display:block;margin-top:5px;font-size:22px;font-weight:normal}
-.contenedor{width:94%;max-width:1050px;margin:20px auto}.tarjeta{background:white;border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,.09)}
-button{border:0;border-radius:9px;padding:12px;font-size:15px;background:#455a64;color:white;cursor:pointer}button:active{transform:scale(.98)}
-.boton-completo{width:100%;margin-top:10px}.boton-azul{background:#1565c0}.boton-rojo{background:#c62828}.boton-gris{background:#607d8b}.boton-verde{background:#2e7d32}
+header h1{margin:0;font-size:30px}
+header h1 span{display:block;margin-top:5px;font-size:22px;font-weight:normal}
+.contenedor{width:94%;max-width:1050px;margin:20px auto}
+.tarjeta{background:white;border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,.09)}
+button{border:0;border-radius:9px;padding:12px;font-size:15px;background:#455a64;color:white;cursor:pointer}
+button:active{transform:scale(.98)}
+.boton-completo{width:100%;margin-top:10px}
+.boton-azul{background:#1565c0}
+.boton-rojo{background:#c62828}
+.boton-gris{background:#607d8b}
+.boton-verde{background:#2e7d32}
 input,textarea,select{width:100%;padding:11px;margin:6px 0 14px;border:1px solid #b0bec5;border-radius:8px;font-size:16px;background:white}
-textarea{min-height:100px}label{display:block;font-weight:bold}.item-lista{background:white;border-radius:12px;padding:15px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.07)}
-.datos-paciente{display:flex;gap:14px;align-items:flex-start}.informacion-paciente{flex:1;min-width:0}
-.foto-principal-contenedor{width:145px;flex-shrink:0}.foto-principal,.sin-foto{width:145px;height:145px;object-fit:cover;border-radius:12px;border:2px solid #90a4ae}
+textarea{min-height:100px}
+label{display:block;font-weight:bold}
+.item-lista{background:white;border-radius:12px;padding:15px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.datos-paciente{display:flex;gap:14px;align-items:flex-start}
+.informacion-paciente{flex:1;min-width:0}
+.foto-principal-contenedor{width:145px;flex-shrink:0}
+.foto-principal,.sin-foto{width:145px;height:145px;object-fit:cover;border-radius:12px;border:2px solid #90a4ae}
 .sin-foto{background:#eceff1;display:flex;align-items:center;justify-content:center;text-align:center;color:#607d8b;font-weight:bold}
-.botones-foto{display:flex;justify-content:center;gap:4px;margin-top:5px}.icono-pequeno{width:32px;height:32px;min-width:32px;padding:4px;border-radius:8px;font-size:16px;display:flex;align-items:center;justify-content:center}
-.anamnesis-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:8px}.anamnesis-item{background:#f5f7f8;border-radius:9px;padding:8px 10px;border:1px solid #e0e5e8}
-.anamnesis-item strong{display:block;color:#455a64;margin-bottom:2px}.seccion-anamnesis{border:2px solid #90caf9;background:#e3f2fd;color:#1565c0;border-radius:12px;padding:10px 14px;margin-bottom:15px;font-size:20px;font-weight:bold}
+.botones-foto{display:flex;justify-content:center;gap:4px;margin-top:5px}
+.icono-pequeno{width:32px;height:32px;min-width:32px;padding:4px;border-radius:8px;font-size:16px;display:flex;align-items:center;justify-content:center}
+.anamnesis-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:8px}
+.anamnesis-item{background:#f5f7f8;border-radius:9px;padding:8px 10px;border:1px solid #e0e5e8}
+.anamnesis-item strong{display:block;color:#455a64;margin-bottom:2px}
+.seccion-anamnesis{border:2px solid #90caf9;background:#e3f2fd;color:#1565c0;border-radius:12px;padding:10px 14px;margin-bottom:15px;font-size:20px;font-weight:bold}
 .historia-boton{background:#e3f2fd;color:#1565c0;border:2px solid #90caf9;font-weight:bold}
-.selector-odontograma{display:flex;align-items:center;gap:10px;margin-bottom:15px}.selector-odontograma select{width:auto;min-width:180px;margin:0}
+.selector-odontograma{display:flex;align-items:center;gap:10px;margin-bottom:15px}
+.selector-odontograma select{width:auto;min-width:180px;margin:0}
 .odontograma-pequeno{overflow-x:auto;padding:12px;background:#f5f7f8;border:1px solid #cfd8dc;border-radius:12px}
-.fila-dientes{display:flex;justify-content:center;align-items:center;gap:4px;min-width:650px;margin:7px 0}.diente{width:34px;min-width:34px;height:42px;background:white;border:1px solid #78909c;padding:2px;font-size:10px;font-weight:bold;display:flex;align-items:center;justify-content:center;text-align:center;color:#263238}
-.diente.adulto{border-radius:5px}.diente.nino{border-radius:50%}.diente.seleccionado{background:#90caf9;border:2px solid #1565c0}
-.odontograma-grande{overflow-x:auto;width:100%}.fila-grande{display:flex;justify-content:center;align-items:center;gap:6px;min-width:850px;margin:15px 0}
+.fila-dientes{display:flex;justify-content:center;align-items:center;gap:4px;min-width:650px;margin:7px 0}
+.diente{width:34px;min-width:34px;height:42px;background:white;border:1px solid #78909c;padding:2px;font-size:10px;font-weight:bold;display:flex;align-items:center;justify-content:center;text-align:center;color:#263238}
+.diente.adulto{border-radius:5px}
+.diente.nino{border-radius:50%}
+.diente.seleccionado{background:#90caf9;border:2px solid #1565c0}
+.odontograma-grande{overflow-x:auto;width:100%}
+.fila-grande{display:flex;justify-content:center;align-items:center;gap:6px;min-width:850px;margin:15px 0}
 .diente-grande{width:50px;min-width:50px;height:70px;border:2px solid #607d8b;background:white;border-radius:8px;font-size:12px;font-weight:bold;padding:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#263238}
-.diente-grande.nino{border-radius:50%}.diente-grande.seleccionado{background:#90caf9;border-color:#1565c0}.diente-numero{display:block;font-size:12px;font-weight:bold;margin-top:3px}
+.diente-grande.nino{border-radius:50%}
+.diente-grande.seleccionado{background:#90caf9;border-color:#1565c0}
+.diente-numero{display:block;font-size:12px;font-weight:bold;margin-top:3px}
 .estado-pieza{background:#f5f7f8;border-radius:12px;padding:15px;margin-top:15px}
 .fotos-grid{display:grid;grid-template-columns:1fr 2fr 1fr;grid-template-rows:1fr 1fr;gap:8px;width:100%;max-width:650px;margin:auto}
 .foto-box{border:2px dashed #b0bec5;border-radius:10px;min-height:100px;display:flex;justify-content:center;align-items:center;background:#f5f7f8;color:#78909c;overflow:hidden;text-align:center;padding:5px;font-size:13px;position:relative}
-.foto-box img{width:100%;height:100%;object-fit:cover;cursor:pointer}.foto-central{grid-column:2;grid-row:1 / 3;min-height:208px}
-.foto-izq1{grid-column:1;grid-row:1}.foto-izq2{grid-column:1;grid-row:2}.foto-der1{grid-column:3;grid-row:1}.foto-der2{grid-column:3;grid-row:2}
-.radio-contenedor{width:100%;overflow-x:auto}.radiografias{display:grid;grid-template-columns:repeat(7,minmax(55px,1fr));grid-template-rows:auto auto auto auto;gap:6px;width:100%;max-width:650px;margin:0 auto}
+.foto-box img{width:100%;height:100%;object-fit:cover;cursor:pointer}
+.foto-central{grid-column:2;grid-row:1 / 3;min-height:208px}
+.foto-izq1{grid-column:1;grid-row:1}
+.foto-izq2{grid-column:1;grid-row:2}
+.foto-der1{grid-column:3;grid-row:1}
+.foto-der2{grid-column:3;grid-row:2}
+.radio-contenedor{width:100%;overflow-x:auto}
+.radiografias{display:grid;grid-template-columns:repeat(7,minmax(55px,1fr));grid-template-rows:auto auto auto auto;gap:6px;width:100%;max-width:650px;margin:0 auto}
 .radiografia{width:100%;aspect-ratio:1/1;border:2px dashed #b0bec5;border-radius:7px;background:#f5f7f8;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#78909c;font-size:11px;text-align:center;min-width:0}
-.radiografia img{width:100%;height:100%;object-fit:cover;cursor:pointer}.radio-top{grid-row:1}.radio-central{grid-column:3/6;grid-row:2/4;height:auto;min-height:190px;aspect-ratio:auto}.radio-central img{min-height:186px}.radio-bottom{grid-row:4}
-.tabla-contenedor{width:100%;overflow-x:auto}.tabla-tratamiento,.tabla-ortodoncia,.tabla-citas{width:100%;border-collapse:collapse;min-width:600px}
-.tabla-tratamiento th,.tabla-ortodoncia th{background:#455a64;color:white;padding:12px;text-align:left}.tabla-tratamiento td{border:1px solid #cfd8dc;padding:7px}.tabla-tratamiento input{margin:0}
-.tabla-ortodoncia th{cursor:pointer}.tabla-ortodoncia td{padding:12px;border-bottom:1px solid #e0e0e0}.tabla-ortodoncia tr:hover{background:#f1f6f9}
-.documento-grupo{border:1px solid #cfd8dc;border-radius:11px;margin-bottom:12px;overflow:hidden}.documento-titulo{width:100%;text-align:left;background:#455a64;color:white;border-radius:0}.documento-contenido{display:none;padding:15px;background:#f8fafb}.documento-contenido.abierto{display:block}.documento-opcion{display:flex;justify-content:space-between;align-items:center;gap:10px;background:white;border:1px solid #d5dde1;border-radius:9px;padding:12px;margin-bottom:8px}
-.tabla-citas{min-width:650px}.tabla-citas th{background:#37474f;color:white;padding:12px;text-align:left}.tabla-citas td{border:1px solid #d5dde1;padding:7px}.tabla-citas input{margin:0}.hora-cita{width:110px;font-weight:bold;background:#f1f4f5}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:2000;padding:15px}.modal-contenido{background:white;width:100%;max-width:1100px;max-height:95vh;overflow:auto;border-radius:18px;padding:20px}
-.menu-inferior{position:fixed;bottom:0;left:0;width:100%;min-height:75px;background:white;display:flex;justify-content:space-around;box-shadow:0 -3px 12px rgba(0,0,0,.15);z-index:999;overflow-x:auto}.menu-inferior button{min-width:95px;height:75px;margin:0;padding:5px;background:white;color:#455a64;border-radius:0;font-size:11px}.menu-inferior button.activo{color:#1565c0;background:#e3f2fd;border-top:4px solid #1565c0}.menu-icono{display:block;font-size:21px;margin-bottom:3px}
-.fecha-grid{display:grid;grid-template-columns:1fr 1.5fr 1.5fr;gap:7px}.fecha-grid select{margin:6px 0 14px}
+.radiografia img{width:100%;height:100%;object-fit:cover;cursor:pointer}
+.radio-top{grid-row:1}
+.radio-central{grid-column:3/6;grid-row:2/4;height:auto;min-height:190px;aspect-ratio:auto}
+.radio-central img{min-height:186px}
+.radio-bottom{grid-row:4}
+.tabla-contenedor{width:100%;overflow-x:auto}
+.tabla-tratamiento,.tabla-ortodoncia,.tabla-citas{width:100%;border-collapse:collapse;min-width:600px}
+.tabla-tratamiento th,.tabla-ortodoncia th{background:#455a64;color:white;padding:12px;text-align:left}
+.tabla-tratamiento td{border:1px solid #cfd8dc;padding:7px}
+.tabla-tratamiento input{margin:0}
+.tabla-ortodoncia th{cursor:pointer}
+.tabla-ortodoncia td{padding:12px;border-bottom:1px solid #e0e0e0}
+.tabla-ortodoncia tr:hover{background:#f1f6f9}
+.documento-grupo{border:1px solid #cfd8dc;border-radius:11px;margin-bottom:12px;overflow:hidden}
+.documento-titulo{width:100%;text-align:left;background:#455a64;color:white;border-radius:0}
+.documento-contenido{display:none;padding:15px;background:#f8fafb}
+.documento-contenido.abierto{display:block}
+.documento-opcion{display:flex;justify-content:space-between;align-items:center;gap:10px;background:white;border:1px solid #d5dde1;border-radius:9px;padding:12px;margin-bottom:8px}
+.tabla-citas{min-width:650px}
+.tabla-citas th{background:#37474f;color:white;padding:12px;text-align:left}
+.tabla-citas td{border:1px solid #d5dde1;padding:7px}
+.tabla-citas input{margin:0}
+.hora-cita{width:110px;font-weight:bold;background:#f1f4f5}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:2000;padding:15px}
+.modal-contenido{background:white;width:100%;max-width:1100px;max-height:95vh;overflow:auto;border-radius:18px;padding:20px}
+.menu-inferior{position:fixed;bottom:0;left:0;width:100%;min-height:75px;background:white;display:flex;justify-content:space-around;box-shadow:0 -3px 12px rgba(0,0,0,.15);z-index:999;overflow-x:auto}
+.menu-inferior button{min-width:95px;height:75px;margin:0;padding:5px;background:white;color:#455a64;border-radius:0;font-size:11px}
+.menu-inferior button.activo{color:#1565c0;background:#e3f2fd;border-top:4px solid #1565c0}
+.menu-icono{display:block;font-size:21px;margin-bottom:3px}
+.fecha-grid{display:grid;grid-template-columns:1fr 1.5fr 1.5fr;gap:7px}
+.fecha-grid select{margin:6px 0 14px}
+
 @media(max-width:600px){
-header h1{font-size:26px}header h1 span{font-size:19px}.datos-paciente{gap:8px}.foto-principal-contenedor,.foto-principal,.sin-foto{width:120px}.foto-principal,.sin-foto{height:120px}.anamnesis-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.anamnesis-item{padding:7px;font-size:13px}.anamnesis-item strong{font-size:12px}.fotos-grid{max-width:100%}.radiografias{width:100%;min-width:0}.fila-grande{justify-content:flex-start}.menu-inferior button{min-width:82px}}
+header h1{font-size:26px}
+header h1 span{font-size:19px}
+.datos-paciente{gap:8px}
+.foto-principal-contenedor,.foto-principal,.sin-foto{width:120px}
+.foto-principal,.sin-foto{height:120px}
+.anamnesis-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+.anamnesis-item{padding:7px;font-size:13px}
+.anamnesis-item strong{font-size:12px}
+.fotos-grid{max-width:100%}
+.radiografias{width:100%;min-width:0}
+.fila-grande{justify-content:flex-start}
+.menu-inferior button{min-width:82px}
+}
 </style>
-  <script src="https://accounts.google.com/gsi/client"></script>
-  <script>
-const GOOGLE_CLIENT_ID = "871933422694-bn62kang02ucd14pqboj673f18bkhtlu.apps.googleusercontent.com";
+
+<script src="https://accounts.google.com/gsi/client"></script>
+
+<script>
+const GOOGLE_CLIENT_ID="871933422694-bn62kang02ucd14pqboj673f18bkhtlu.apps.googleusercontent.com";
 </script>
 </head>
+
 <body>
-  <button onclick="conectarGoogleDrive()" style="margin:10px;padding:10px 15px;border:0;border-radius:8px;background:#4285F4;color:white;font-weight:bold;">
+
+<button onclick="conectarGoogleDrive()" style="margin:10px;padding:10px 15px;border:0;border-radius:8px;background:#4285F4;color:white;font-weight:bold;">
 ☁️ Conectar Google Drive
 </button>
-<header><h1>Centro Odontológico<span>"San Luis"</span></h1></header>
+
+<header>
+<h1>Centro Odontológico<span>"San Luis"</span></h1>
+</header>
+
 <div id="app"></div>
+
 <div class="menu-inferior">
 <button id="menuInicio" onclick="inicio()"><span class="menu-icono">🏠</span>Inicio</button>
 <button id="menuAnamnesis" onclick="irAnamnesis()"><span class="menu-icono">📝</span>Anamnesis</button>
@@ -67,93 +138,2212 @@ const GOOGLE_CLIENT_ID = "871933422694-bn62kang02ucd14pqboj673f18bkhtlu.apps.goo
 <button id="menuCitas" onclick="citas()"><span class="menu-icono">📅</span>Citas</button>
 <button id="menuRespaldo" onclick="respaldo()"><span class="menu-icono">💾</span>Respaldo</button>
 </div>
-<div id="modalOdontograma" class="modal"><div class="modal-contenido"><h2>🦷 Odontograma</h2><div class="selector-odontograma"><label style="margin:0">Tipo:</label><select id="tipoOdontogramaModal" onchange="cambiarTipoOdontogramaModal()"><option value="adulto">Adulto</option><option value="nino">Niño</option><option value="mixto">Mixto</option></select></div><div id="odontogramaGrande"></div><div id="datosDiente"></div><button class="boton-rojo boton-completo" onclick="cerrarOdontograma()">✖ Cerrar odontograma</button></div></div>
-<div id="visorFoto" class="modal"><div style="text-align:center;width:100%"><img id="imagenGrande" style="max-width:95%;max-height:80vh;border-radius:10px"><button class="boton-rojo boton-completo" onclick="cerrarFoto()">✖ Cerrar</button></div></div>
+
+<div id="modalOdontograma" class="modal">
+<div class="modal-contenido">
+<h2>🦷 Odontograma</h2>
+<div class="selector-odontograma">
+<label style="margin:0">Tipo:</label>
+<select id="tipoOdontogramaModal" onchange="cambiarTipoOdontogramaModal()">
+<option value="adulto">Adulto</option>
+<option value="nino">Niño</option>
+<option value="mixto">Mixto</option>
+</select>
+</div>
+<div id="odontogramaGrande"></div>
+<div id="datosDiente"></div>
+<button class="boton-rojo boton-completo" onclick="cerrarOdontograma()">✖ Cerrar odontograma</button>
+</div>
+</div>
+
+<div id="visorFoto" class="modal">
+<div style="text-align:center;width:100%">
+<img id="imagenGrande" style="max-width:95%;max-height:80vh;border-radius:10px">
+<button class="boton-rojo boton-completo" onclick="cerrarFoto()">✖ Cerrar</button>
+</div>
+</div>
+
 <script>
-let pacientes=JSON.parse(localStorage.getItem("pacientes"))||[],columnaOrden="apellidoPaterno",direccionOrden="asc",pacienteOdontogramaActual=null,tipoOdontogramaActual="adulto",pacienteActualId=null;
-function guardarBaseDatos(){localStorage.setItem("pacientes",JSON.stringify(pacientes))}
-function marcarMenu(n){document.querySelectorAll(".menu-inferior button").forEach(b=>b.classList.remove("activo"));let b=document.getElementById("menu"+n);if(b)b.classList.add("activo")}
-function obtenerNombre(p){return p.nombreCompleto||p.nombre||""}
-function inicio(){marcarMenu("Inicio");document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>👤 Pacientes</h2><p>Registra y organiza la información de tus pacientes.</p><button class="boton-completo" onclick="nuevoPaciente()">➕ Agregar nuevo paciente</button><button class="boton-azul boton-completo" onclick="listaPacientes()">📋 Ver pacientes</button></div></div>`}
-const meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-function fechaSelects(prefijo,valor=""){let d="",m="",y="";if(valor&&/^\d{4}-\d{2}-\d{2}$/.test(valor)){[y,m,d]=valor.split("-");m=String(Number(m))}let anioActual=new Date().getFullYear();let ys="";for(let a=anioActual;a>=1900;a--)ys+=`<option value="${a}" ${a==y?"selected":""}>${a}</option>`;let ms='<option value="">Mes</option>'+meses.map((x,i)=>`<option value="${i+1}" ${i+1==Number(m)?"selected":""}>${x}</option>`).join("");let ds='<option value="">Día</option>'+Array.from({length:31},(_,i)=>`<option value="${i+1}" ${i+1==Number(d)?"selected":""}>${i+1}</option>`).join("");return `<div class="fecha-grid"><select id="${prefijo}Dia">${ds}</select><select id="${prefijo}Mes">${ms}</select><select id="${prefijo}Anio"><option value="">Año</option>${ys}</select></div>`}
-function leerFecha(prefijo){let d=document.getElementById(prefijo+"Dia")?.value,m=document.getElementById(prefijo+"Mes")?.value,y=document.getElementById(prefijo+"Anio")?.value;return d&&m&&y?`${y}-${String(m).padStart(2,"0")}-${String(d).padStart(2,"0")}`:""}
-function nuevoPaciente(){document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>👤 Nuevo paciente</h2><label>Foto principal</label><input type="file" id="foto" accept="image/*"><label>Apellido paterno</label><input id="apellidoPaterno" placeholder="Apellido paterno"><label>Apellido materno</label><input id="apellidoMaterno" placeholder="Apellido materno"><label>Nombres</label><input id="nombres" placeholder="Nombres"><label>DNI</label><input id="dni" maxlength="8" placeholder="DNI"><label>Teléfono</label><input id="telefono" placeholder="Teléfono"><label>Fecha de nacimiento</label>${fechaSelects("fecha")}<label>Dirección</label><input id="direccion" placeholder="Dirección"><label>Institución</label><input id="institucion" placeholder="Institución"><label>Lugar de trabajo</label><input id="lugarTrabajo" placeholder="Lugar de trabajo"><label>Observaciones</label><textarea id="observaciones" placeholder="Observaciones"></textarea><button class="boton-completo" onclick="guardarPaciente()">💾 Guardar paciente</button><button class="boton-gris boton-completo" onclick="inicio()">⬅️ Volver</button></div></div>`}
-function guardarPaciente(){let p={id:Date.now(),apellidoPaterno:document.getElementById("apellidoPaterno").value.trim(),apellidoMaterno:document.getElementById("apellidoMaterno").value.trim(),nombres:document.getElementById("nombres").value.trim(),dni:document.getElementById("dni").value.trim(),telefono:document.getElementById("telefono").value.trim(),fecha:leerFecha("fecha"),direccion:document.getElementById("direccion").value.trim(),institucion:document.getElementById("institucion").value.trim(),lugarTrabajo:document.getElementById("lugarTrabajo").value.trim(),observaciones:document.getElementById("observaciones").value.trim(),foto:"",fotos:["","","","",""],radiografias:Array(15).fill(""),odontograma:{},piezas:{},tipoOdontograma:"adulto",tratamientos:[],documentos:{consentimientos:{},contratos:[],constancias:{altaOdontologica:[],descansoOdontologico:[]}}};p.nombreCompleto=(p.apellidoPaterno+" "+p.apellidoMaterno+" "+p.nombres).trim();p.nombre=p.nombreCompleto;let f=document.getElementById("foto").files[0];if(f){let r=new FileReader();r.onload=e=>{p.foto=e.target.result;pacientes.push(p);guardarBaseDatos();alert("✅ Paciente guardado.");listaPacientes()};r.readAsDataURL(f)}else{pacientes.push(p);guardarBaseDatos();alert("✅ Paciente guardado.");listaPacientes()}}
-function listaPacientes(){let lista=[...pacientes];lista.sort((a,b)=>(a.apellidoPaterno||obtenerNombre(a)).localeCompare(b.apellidoPaterno||obtenerNombre(b),"es",{sensitivity:"base"}));document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>📋 Ver pacientes</h2><input id="buscar" placeholder="🔎 Buscar por nombre o DNI..." oninput="buscarPaciente()"></div><div id="resultados">${lista.map(crearItemLista).join("")}${!lista.length?'<div class="tarjeta">No hay pacientes registrados.</div>':""}</div><button class="boton-completo" onclick="nuevoPaciente()">➕ Agregar paciente</button></div>`}
-function crearItemLista(p){return `<div class="item-lista"><div><strong>${obtenerNombre(p)}</strong><br>DNI: ${p.dni||"—"}</div><button class="boton-azul" onclick="verPaciente(${p.id})">📂</button></div>`}
-function buscarPaciente(){let t=document.getElementById("buscar").value.toLowerCase(),r=pacientes.filter(p=>obtenerNombre(p).toLowerCase().includes(t)||(p.dni||"").includes(t));document.getElementById("resultados").innerHTML=r.length?r.map(crearItemLista).join(""):'<div class="tarjeta">No se encontró ningún paciente.</div>'}
-function prepararDatosPaciente(p){if(!p.fotos)p.fotos=["","","","",""];while(p.fotos.length<5)p.fotos.push("");if(!p.radiografias)p.radiografias=Array(15).fill("");while(p.radiografias.length<15)p.radiografias.push("");if(!p.odontograma)p.odontograma={};if(!p.piezas)p.piezas={};if(!p.tratamientos)p.tratamientos=[];if(!p.tipoOdontograma)p.tipoOdontograma="adulto";if(!p.documentos)p.documentos={consentimientos:{},contratos:[],constancias:{altaOdontologica:[],descansoOdontologico:[]}}}
-function verPaciente(id){let p=pacientes.find(x=>x.id===id);if(!p)return;prepararDatosPaciente(p);pacienteActualId=id;marcarMenu("Anamnesis");let foto=p.foto?`<img src="${p.foto}" class="foto-principal" onclick="verFoto('${p.foto}')">`:`<div class="sin-foto">SIN FOTO</div>`;document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><div class="seccion-anamnesis">📝 Anamnesis</div><div class="datos-paciente"><div class="informacion-paciente"><h2>${obtenerNombre(p)}</h2><div class="anamnesis-grid"><div class="anamnesis-item"><strong>DNI</strong>${p.dni||"—"}</div><div class="anamnesis-item"><strong>Teléfono</strong>${p.telefono||"—"}</div><div class="anamnesis-item"><strong>Fecha de nacimiento</strong>${p.fecha||"—"}</div><div class="anamnesis-item"><strong>Dirección</strong>${p.direccion||"—"}</div><div class="anamnesis-item"><strong>Institución</strong>${p.institucion||"—"}</div><div class="anamnesis-item"><strong>Lugar de trabajo</strong>${p.lugarTrabajo||"—"}</div></div></div><div class="foto-principal-contenedor">${foto}<div class="botones-foto"><button class="icono-pequeno boton-azul" onclick="agregarFotoPrincipal(${id})">➕</button><button class="icono-pequeno boton-azul" onclick="editarPaciente(${id})">✏️</button><button class="icono-pequeno boton-rojo" onclick="eliminarPaciente(${id})">🗑️</button><button class="icono-pequeno boton-gris" onclick="listaPacientes()">↩️</button></div></div></div><input type="file" id="fotoPrincipalNueva" accept="image/*" style="display:none" onchange="guardarFotoPrincipal(${id})"><hr><strong>Observaciones</strong><p>${p.observaciones||"Sin observaciones"}</p><button class="historia-boton boton-completo" onclick="historiaOrtodoncia(${id})">😬 Historia clínica de ortodoncia</button><button class="historia-boton boton-completo" onclick="historiaEndodoncia(${id})">🦷 Historia clínica de endodoncia</button></div></div>`}
-function agregarFotoPrincipal(){document.getElementById("fotoPrincipalNueva")?.click()}
-function guardarFotoPrincipal(id){let p=pacientes.find(x=>x.id===id),f=document.getElementById("fotoPrincipalNueva")?.files[0];if(!p||!f)return;let r=new FileReader();r.onload=e=>{p.foto=e.target.result;guardarBaseDatos();verPaciente(id)};r.readAsDataURL(f)}
-function editarPaciente(id){let p=pacientes.find(x=>x.id===id);if(!p)return;document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>✏️ Editar paciente</h2><label>Apellido paterno</label><input id="editarApellidoPaterno" value="${p.apellidoPaterno||""}"><label>Apellido materno</label><input id="editarApellidoMaterno" value="${p.apellidoMaterno||""}"><label>Nombres</label><input id="editarNombres" value="${p.nombres||""}"><label>DNI</label><input id="editarDni" value="${p.dni||""}" maxlength="8"><label>Teléfono</label><input id="editarTelefono" value="${p.telefono||""}"><label>Fecha de nacimiento</label>${fechaSelects("editarFecha",p.fecha||"")}<label>Dirección</label><input id="editarDireccion" value="${p.direccion||""}"><label>Institución</label><input id="editarInstitucion" value="${p.institucion||""}"><label>Lugar de trabajo</label><input id="editarLugarTrabajo" value="${p.lugarTrabajo||""}"><label>Observaciones</label><textarea id="editarObservaciones">${p.observaciones||""}</textarea><button class="boton-azul boton-completo" onclick="actualizarPaciente(${id})">💾 Guardar cambios</button><button class="boton-gris boton-completo" onclick="verPaciente(${id})">⬅️ Cancelar</button></div></div>`}
-function actualizarPaciente(id){let p=pacientes.find(x=>x.id===id);if(!p)return;p.apellidoPaterno=document.getElementById("editarApellidoPaterno").value.trim();p.apellidoMaterno=document.getElementById("editarApellidoMaterno").value.trim();p.nombres=document.getElementById("editarNombres").value.trim();p.nombreCompleto=(p.apellidoPaterno+" "+p.apellidoMaterno+" "+p.nombres).trim();p.nombre=p.nombreCompleto;p.dni=document.getElementById("editarDni").value.trim();p.telefono=document.getElementById("editarTelefono").value.trim();p.fecha=leerFecha("editarFecha");p.direccion=document.getElementById("editarDireccion").value.trim();p.institucion=document.getElementById("editarInstitucion").value.trim();p.lugarTrabajo=document.getElementById("editarLugarTrabajo").value.trim();p.observaciones=document.getElementById("editarObservaciones").value.trim();guardarBaseDatos();alert("✅ Cambios guardados.");verPaciente(id)}
-function eliminarPaciente(id){let p=pacientes.find(x=>x.id===id);if(!p||!confirm("¿Eliminar a "+obtenerNombre(p)+"?"))return;pacientes=pacientes.filter(x=>x.id!==id);guardarBaseDatos();listaPacientes()}
-function irAnamnesis(){pacienteActualId?verPaciente(pacienteActualId):anamnesis()}
-function anamnesis(){marcarMenu("Anamnesis");document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>📝 Anamnesis</h2><p>Selecciona un paciente para revisar su información.</p><input id="buscarAnamnesis" placeholder="🔎 Buscar por DNI o apellidos" oninput="filtrarAnamnesis()"></div><div id="listaAnamnesis">${pacientes.map(crearItemLista).join("")}</div></div>`}
-function filtrarAnamnesis(){let t=document.getElementById("buscarAnamnesis").value.toLowerCase(),l=pacientes.filter(p=>(p.apellidoPaterno+" "+p.apellidoMaterno).toLowerCase().includes(t)||(p.dni||"").includes(t));document.getElementById("listaAnamnesis").innerHTML=l.length?l.map(crearItemLista).join(""):'<div class="tarjeta">No se encontró ningún paciente.</div>'}
-function historiaOrtodoncia(id){pacienteActualId=id;mostrarHistoriaClinica(id,"ortodoncia")}
-function historiaEndodoncia(id){pacienteActualId=id;mostrarHistoriaClinica(id,"endodoncia")}
-function mostrarHistoriaClinica(id,esp){let p=pacientes.find(x=>x.id===id);if(!p)return;prepararDatosPaciente(p);pacienteActualId=id;marcarMenu(esp==="ortodoncia"?"Ortodoncia":"Endodoncia");document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>📝 Anamnesis</h2><label>DNI</label><select onchange="cambiarPacienteEspecialidad(this.value,'${esp}')">${pacientes.map(x=>`<option value="${x.id}" ${x.id===id?"selected":""}>${x.dni||"Sin DNI"} — ${obtenerNombre(x)}</option>`).join("")}</select><h2>${obtenerNombre(p)}</h2></div><div class="tarjeta"><h2>🦷 Odontograma</h2><div class="selector-odontograma"><label style="margin:0">Tipo:</label><select onchange="cambiarTipoOdontograma(${id},this.value)"><option value="adulto" ${p.tipoOdontograma==="adulto"?"selected":""}>Adulto</option><option value="nino" ${p.tipoOdontograma==="nino"?"selected":""}>Niño</option><option value="mixto" ${p.tipoOdontograma==="mixto"?"selected":""}>Mixto</option></select></div><div class="odontograma-pequeno">${crearOdontograma(p)}</div><button class="boton-azul boton-completo" onclick="abrirOdontograma(${id})">🔍 Abrir odontograma</button></div><div class="tarjeta"><h2>📷 Fotos</h2><div class="fotos-grid">${crearFotoBox(p.fotos[0],"foto-izq1","Oclusal superior")}${crearFotoBox(p.fotos[1],"foto-izq2","Oclusal inferior")}${crearFotoBox(p.fotos[2],"foto-central","Frontal")}${crearFotoBox(p.fotos[3],"foto-der1","Lateral izquierdo")}${crearFotoBox(p.fotos[4],"foto-der2","Lateral derecho")}</div><br><label>Agregar fotos</label><input type="file" id="nuevasFotos" accept="image/*" multiple onchange="agregarFotos(${id})"></div><div class="tarjeta"><h2>🩻 Radiografías</h2><div class="radio-contenedor"><div class="radiografias">${crearRadiografias(p)}</div></div><br><label>Agregar radiografías</label><input type="file" id="nuevasRadiografias" accept="image/*" multiple onchange="agregarRadiografias(${id})"></div><div class="tarjeta"><h2>📋 Tratamiento</h2><div class="tabla-contenedor"><table class="tabla-tratamiento"><thead><tr><th>Fecha</th><th>Tratamiento</th><th>A cuenta</th><th>Pagó</th></tr></thead><tbody id="tablaTratamiento">${crearFilasTratamiento(p)}</tbody></table></div><button class="boton-azul boton-completo" onclick="agregarTratamiento(${id})">➕ Agregar tratamiento</button><button class="boton-completo" onclick="guardarTratamientos(${id})">💾 Guardar tratamiento</button></div><div class="tarjeta"><h2>📄 Documentos</h2>${documentosPaciente(id)}</div><button class="boton-gris boton-completo" onclick="verPaciente(${id})">⬅️ Volver al paciente</button></div>`}
-function cambiarPacienteEspecialidad(id,e){if(id){pacienteActualId=Number(id);mostrarHistoriaClinica(Number(id),e)}}
-function crearOdontograma(p){let a=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28],b=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38],an=[55,54,53,52,51,61,62,63,64,65],bn=[75,74,73,72,71,81,82,83,84,85];if(p.tipoOdontograma==="adulto")return `<div class="fila-dientes">${a.map(n=>crearDiente(p,n)).join("")}</div><div class="fila-dientes">${b.map(n=>crearDiente(p,n)).join("")}</div>`;if(p.tipoOdontograma==="nino")return `<div class="fila-dientes">${an.map(n=>crearDiente(p,n)).join("")}</div><div class="fila-dientes">${bn.map(n=>crearDiente(p,n)).join("")}</div>`;return `<div class="fila-dientes">${a.map(n=>crearDiente(p,n)).join("")}</div><div class="fila-dientes">${an.map(n=>crearDiente(p,n)).join("")}</div><div class="fila-dientes">${bn.map(n=>crearDiente(p,n)).join("")}</div><div class="fila-dientes">${b.map(n=>crearDiente(p,n)).join("")}</div>`}
-function esDienteNino(n){return(n>=51&&n<=55)||(n>=61&&n<=65)||(n>=71&&n<=75)||(n>=81&&n<=85)}
-function crearDiente(p,n){return `<button class="diente ${esDienteNino(n)?"nino":"adulto"} ${p.odontograma[n]?"seleccionado":""}" onclick="seleccionarDienteRapido(${p.id},${n})">${n}</button>`}
-function cambiarTipoOdontograma(id,t){let p=pacientes.find(x=>x.id===id);if(!p)return;p.tipoOdontograma=t;guardarBaseDatos();mostrarHistoriaClinica(id,"ortodoncia")}
-function crearFotoBox(src,c,n){return src?`<div class="foto-box ${c}"><img src="${src}" onclick="verFoto('${src}')"></div>`:`<div class="foto-box ${c}">${n}</div>`}
-function agregarFotos(id){let p=pacientes.find(x=>x.id===id);if(!p)return;let fs=document.getElementById("nuevasFotos").files,pos=[];for(let i=0;i<5;i++)if(!p.fotos[i])pos.push(i);let q=Math.min(fs.length,pos.length);if(!q){alert("Ya tienes 5 fotos.");return}let done=0;for(let i=0;i<q;i++){let r=new FileReader(),k=pos[i];r.onload=e=>{p.fotos[k]=e.target.result;if(++done===q){guardarBaseDatos();mostrarHistoriaClinica(id,"ortodoncia")}};r.readAsDataURL(fs[i])}}
-function crearRadiografias(p){let h="";for(let i=0;i<15;i++){let c=i<7?"radio-top":i===7?"radio-central":"radio-bottom";h+=p.radiografias[i]?`<div class="radiografia ${c}"><img src="${p.radiografias[i]}" onclick="verFoto('${p.radiografias[i]}')"></div>`:`<div class="radiografia ${c}">${i===7?"PANORÁMICA":i+1}</div>`}return h}
-function agregarRadiografias(id){let p=pacientes.find(x=>x.id===id);if(!p)return;let fs=document.getElementById("nuevasRadiografias").files,pos=[];for(let i=0;i<15;i++)if(!p.radiografias[i])pos.push(i);let q=Math.min(fs.length,pos.length);if(!q){alert("Ya tienes las 15 radiografías.");return}let done=0;for(let i=0;i<q;i++){let r=new FileReader(),k=pos[i];r.onload=e=>{p.radiografias[k]=e.target.result;if(++done===q){guardarBaseDatos();mostrarHistoriaClinica(id,"ortodoncia")}};r.readAsDataURL(fs[i])}}
-function crearFilasTratamiento(p){if(!p.tratamientos.length)return '<tr><td colspan="4" style="text-align:center">No hay tratamientos registrados.</td></tr>';return p.tratamientos.map(t=>`<tr><td><input type="date" class="trat-fecha" value="${t.fecha||""}"></td><td><input class="trat-nombre" value="${t.tratamiento||""}"></td><td><input type="number" class="trat-cuenta" value="${t.cuenta||""}"></td><td><input type="number" class="trat-pago" value="${t.pago||""}"></td></tr>`).join("")}
-function agregarTratamiento(id){let p=pacientes.find(x=>x.id===id);p.tratamientos.push({fecha:"",tratamiento:"",cuenta:"",pago:""});guardarBaseDatos();mostrarHistoriaClinica(id,"ortodoncia")}
-function guardarTratamientos(id){let p=pacientes.find(x=>x.id===id),t=[];document.querySelectorAll("#tablaTratamiento tr").forEach(r=>{let f=r.querySelector(".trat-fecha");if(f)t.push({fecha:f.value,tratamiento:r.querySelector(".trat-nombre").value,cuenta:r.querySelector(".trat-cuenta").value,pago:r.querySelector(".trat-pago").value})});p.tratamientos=t;guardarBaseDatos();alert("✅ Tratamiento guardado.")}
-function documentosPaciente(id){return `<div class="documento-grupo"><button class="documento-titulo" onclick="alternarDocumento('d${id}')">Documentos ▼</button><div id="d${id}" class="documento-contenido">${["Consentimiento informado de Ortodoncia","Consentimiento informado de Endodoncia","Consentimiento informado de Cirugía","Consentimiento informado de Implantología","Consentimiento informado de Otra especialidad","Boleta de tratamiento","Alta odontológica","Descanso odontológico"].map((n,i)=>crearDocumento(n,i<5?"🦷":"📄")).join("")}</div></div>`}
-function crearDocumento(n,i){return `<div class="documento-opcion"><span>${i} ${n}</span><button class="boton-azul" onclick="descargarDocumentoTexto('${n}')">📥 Descargar</button></div>`}
-function alternarDocumento(id){document.getElementById(id)?.classList.toggle("abierto")}
-function descargarDocumentoTexto(n){let a=document.createElement("a"),u=URL.createObjectURL(new Blob([n+"\\n\\nCentro Odontológico San Luis\\n\\nDocumento para impresión."],{type:"text/plain;charset=utf-8"}));a.href=u;a.download=n.replaceAll(" ","_")+".txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u)}
-function abrirOdontograma(id){let p=pacientes.find(x=>x.id===id);pacienteOdontogramaActual=id;tipoOdontogramaActual=p.tipoOdontograma||"adulto";document.getElementById("tipoOdontogramaModal").value=tipoOdontogramaActual;mostrarOdontogramaGrande();document.getElementById("datosDiente").innerHTML="";document.getElementById("modalOdontograma").style.display="flex"}
-function mostrarOdontogramaGrande(){let p=pacientes.find(x=>x.id===pacienteOdontogramaActual),a=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28],b=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38],an=[55,54,53,52,51,61,62,63,64,65],bn=[75,74,73,72,71,81,82,83,84,85],h="";if(tipoOdontogramaActual==="adulto")h=crearFilaGrande(p,a)+"<hr>"+crearFilaGrande(p,b);else if(tipoOdontogramaActual==="nino")h=crearFilaGrande(p,an)+"<hr>"+crearFilaGrande(p,bn);else h=crearFilaGrande(p,a)+crearFilaGrande(p,an)+"<hr>"+crearFilaGrande(p,bn)+crearFilaGrande(p,b);document.getElementById("odontogramaGrande").innerHTML=h}
-function crearFilaGrande(p,n){return `<div class="fila-grande">${n.map(x=>crearDienteGrande(p,x)).join("")}</div>`}
-function crearDienteGrande(p,n){return `<button class="diente-grande ${esDienteNino(n)?"nino":"adulto"} ${p.odontograma[n]?"seleccionado":""}" onclick="seleccionarDiente(${p.id},${n})">🦷<span class="diente-numero">${n}</span></button>`}
-function cambiarTipoOdontogramaModal(){tipoOdontogramaActual=document.getElementById("tipoOdontogramaModal").value;let p=pacientes.find(x=>x.id===pacienteOdontogramaActual);if(p){p.tipoOdontograma=tipoOdontogramaActual;guardarBaseDatos()}mostrarOdontogramaGrande();document.getElementById("datosDiente").innerHTML=""}
-function seleccionarDiente(id,n){let p=pacientes.find(x=>x.id===id);p.odontograma[n]=!p.odontograma[n];guardarBaseDatos();mostrarOdontogramaGrande();mostrarDatosDiente(id,n)}
-function seleccionarDienteRapido(id,n){let p=pacientes.find(x=>x.id===id);p.odontograma[n]=!p.odontograma[n];guardarBaseDatos()}
-function mostrarDatosDiente(id,n){let p=pacientes.find(x=>x.id===id),a=p.piezas[n]||{};document.getElementById("datosDiente").innerHTML=`<div class="estado-pieza"><h3>🦷 Pieza ${n}</h3><label>Estado</label><select id="estadoPieza"><option value="">Seleccionar</option>${["Sana","Caries","Restauración","Corona","Implante","Endodoncia","Ausente"].map(x=>`<option ${a.estado===x?"selected":""}>${x}</option>`).join("")}</select><label>Observación</label><textarea id="observacionPieza">${a.observacion||""}</textarea><button class="boton-azul boton-completo" onclick="guardarDatosDiente(${id},${n})">💾 Guardar pieza ${n}</button></div>`}
-function guardarDatosDiente(id,n){let p=pacientes.find(x=>x.id===id);p.piezas[n]={estado:document.getElementById("estadoPieza").value,observacion:document.getElementById("observacionPieza").value};guardarBaseDatos();alert("✅ Pieza "+n+" guardada.")}
-function cerrarOdontograma(){document.getElementById("modalOdontograma").style.display="none"}function verFoto(s){document.getElementById("imagenGrande").src=s;document.getElementById("visorFoto").style.display="flex"}function cerrarFoto(){document.getElementById("visorFoto").style.display="none"}
-function ortodoncia(){marcarMenu("Ortodoncia");let l=[...pacientes];ordenarPacientes(l);document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><input id="buscarOrtodoncia" placeholder="🔎 Buscar por DNI o apellidos" oninput="filtrarOrtodoncia()"></div><div class="tarjeta"><div class="tabla-contenedor" id="tablaOrtodoncia">${crearTablaOrtodoncia(l)}</div></div></div>`}
-function crearTablaOrtodoncia(l){let flecha=c=>columnaOrden===c?(direccionOrden==="asc"?" ▲":" ▼"):"";return `<table class="tabla-ortodoncia"><thead><tr><th onclick="ordenarPor('apellidoPaterno')">Apellido paterno${flecha("apellidoPaterno")}</th><th onclick="ordenarPor('apellidoMaterno')">Apellido materno${flecha("apellidoMaterno")}</th><th onclick="ordenarPor('nombres')">Nombres${flecha("nombres")}</th><th onclick="ordenarPor('dni')">DNI${flecha("dni")}</th></tr></thead><tbody>${l.map(p=>`<tr onclick="historiaOrtodoncia(${p.id})"><td>${p.apellidoPaterno||"—"}</td><td>${p.apellidoMaterno||"—"}</td><td>${p.nombres||"—"}</td><td>${p.dni||"—"}</td></tr>`).join("")}</tbody></table>`}
-function obtenerValorOrden(p){return(p[columnaOrden]||"").toString().toLowerCase()}function ordenarPacientes(l){l.sort((a,b)=>obtenerValorOrden(a).localeCompare(obtenerValorOrden(b),"es",{numeric:true,sensitivity:"base"})*(direccionOrden==="asc"?1:-1))}
-function ordenarPor(c){if(columnaOrden===c)direccionOrden=direccionOrden==="asc"?"desc":"asc";else{columnaOrden=c;direccionOrden="asc"}actualizarTablaOrtodoncia()}function actualizarTablaOrtodoncia(){let t=document.getElementById("buscarOrtodoncia")?.value.toLowerCase()||"",l=pacientes.filter(p=>(p.apellidoPaterno+" "+p.apellidoMaterno).toLowerCase().includes(t)||(p.dni||"").includes(t));ordenarPacientes(l);document.getElementById("tablaOrtodoncia").innerHTML=crearTablaOrtodoncia(l)}function filtrarOrtodoncia(){actualizarTablaOrtodoncia()}
-function endodoncia(){marcarMenu("Endodoncia");document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><input id="buscarEndodoncia" placeholder="🔎 Buscar por DNI o apellidos" oninput="filtrarEndodoncia()"></div><div id="listaEndodoncia">${pacientes.map(p=>crearItemListaEndo(p)).join("")}</div></div>`}
-function crearItemListaEndo(p){return `<div class="item-lista"><div><strong>${obtenerNombre(p)}</strong><br>DNI: ${p.dni||"—"}</div><button class="boton-azul" onclick="historiaEndodoncia(${p.id})">📂</button></div>`}
-function filtrarEndodoncia(){let t=document.getElementById("buscarEndodoncia").value.toLowerCase(),l=pacientes.filter(p=>(p.apellidoPaterno+" "+p.apellidoMaterno).toLowerCase().includes(t)||(p.dni||"").includes(t));document.getElementById("listaEndodoncia").innerHTML=l.length?l.map(crearItemListaEndo).join(""):'<div class="tarjeta">No se encontró ningún paciente.</div>'}
-function documentos(){marcarMenu("Documentos");document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>📄 Documentos</h2>${["Consentimientos informados","Boletas","Constancias"].map((x,i)=>`<div class="documento-grupo"><button class="documento-titulo" onclick="alternarDocumento('g${i}')">${x} ▼</button><div id="g${i}" class="documento-contenido">${(i===0?["Consentimiento informado de Ortodoncia","Consentimiento informado de Cirugía","Consentimiento informado de Endodoncia","Consentimiento informado de Implantología","Consentimiento informado de Otra especialidad"]:i===1?["Boleta de tratamiento"]:["Alta odontológica","Descanso odontológico"]).map(n=>crearDocumento(n,"📄")).join("")}</div></div>`).join("")}</div></div>`}
-function citas(){marcarMenu("Citas");let h=[];for(let x=8;x<=20;x++){h.push(x+":00");if(x<20)h.push(x+":30")}document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>📅 Citas</h2><label>Fecha</label><input type="date" id="fechaCitas" value="${new Date().toISOString().slice(0,10)}" onchange="cargarCitas()"></div><div class="tarjeta"><div class="tabla-contenedor"><table class="tabla-citas"><thead><tr><th>Hora</th><th>Paciente</th><th>Tratamiento a realizar</th></tr></thead><tbody>${h.map(x=>`<tr><td class="hora-cita">${x}</td><td><input data-cita-hora="${x}" data-cita-campo="paciente" placeholder="Nombre del paciente"></td><td><input data-cita-hora="${x}" data-cita-campo="tratamiento" placeholder="Tratamiento"></td></tr>`).join("")}</tbody></table></div><button class="boton-azul boton-completo" onclick="guardarCitas()">💾 Guardar citas</button></div></div>`;cargarCitas()}
-function claveCitas(){return"citas_"+document.getElementById("fechaCitas").value}function guardarCitas(){let d={};document.querySelectorAll("[data-cita-hora]").forEach(i=>{d[i.dataset.citaHora]??={};d[i.dataset.citaHora][i.dataset.citaCampo]=i.value});localStorage.setItem(claveCitas(),JSON.stringify(d));alert("✅ Citas guardadas.")}
-function cargarCitas(){let d=JSON.parse(localStorage.getItem(claveCitas())||"{}");document.querySelectorAll("[data-cita-hora]").forEach(i=>i.value=d[i.dataset.citaHora]?.[i.dataset.citaCampo]||"")}
-function respaldo(){marcarMenu("Respaldo");document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>💾 Respaldo</h2><p>Pacientes registrados: <strong>${pacientes.length}</strong></p><button class="boton-azul boton-completo" onclick="crearRespaldo()">📥 Crear respaldo</button></div></div>`}
-function crearRespaldo(){let a=document.createElement("a"),u=URL.createObjectURL(new Blob([JSON.stringify(pacientes,null,2)],{type:"application/json"}));a.href=u;a.download="respaldo_centro_odontologico_san_luis.json";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u);alert("✅ Respaldo creado.")}
-inicio();
-function conectarGoogleDrive() {
-  const tokenClient = google.accounts.oauth2.initTokenClient({
-    client_id: GOOGLE_CLIENT_ID,
-    scope: "https://www.googleapis.com/auth/drive.file",
-    callback: (response) => {
-      if (response.error) {
-        alert("No se pudo conectar con Google Drive.");
-        console.error(response);
-        return;
-      }
 
-      alert("✅ Google Drive conectado correctamente.");
-      window.googleDriveAccessToken = response.access_token;
-    }
-  });
+let pacientes=JSON.parse(localStorage.getItem("pacientes"))||[],
+columnaOrden="apellidoPaterno",
+direccionOrden="asc",
+pacienteOdontogramaActual=null,
+tipoOdontogramaActual="adulto",
+pacienteActualId=null;
 
-  tokenClient.requestAccessToken();
+let driveTokenClient=null;
+let driveTokenExpiry=0;
+
+function guardarBaseDatos(){
+localStorage.setItem("pacientes",JSON.stringify(pacientes));
 }
+
+function marcarMenu(n){
+document.querySelectorAll(".menu-inferior button").forEach(b=>b.classList.remove("activo"));
+let b=document.getElementById("menu"+n);
+if(b)b.classList.add("activo");
+}
+
+function obtenerNombre(p){
+return p.nombreCompleto||p.nombre||"";
+}
+
+function inicio(){
+marcarMenu("Inicio");
+document.getElementById("app").innerHTML=`
+<div class="contenedor">
+<div class="tarjeta">
+<h2>👤 Pacientes</h2>
+<p>Registra y organiza la información de tus pacientes.</p>
+<button class="boton-completo" onclick="nuevoPaciente()">➕ Agregar nuevo paciente</button>
+<button class="boton-azul boton-completo" onclick="listaPacientes()">📋 Ver pacientes</button>
+</div>
+</div>`;
+}
+
+const meses=[
+"Enero","Febrero","Marzo","Abril","Mayo","Junio",
+"Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+];
+
+function fechaSelects(prefijo,valor=""){
+let d="",m="",y="";
+
+if(valor&&/^\d{4}-\d{2}-\d{2}$/.test(valor)){
+[y,m,d]=valor.split("-");
+m=String(Number(m));
+}
+
+let anioActual=new Date().getFullYear();
+let ys="";
+
+for(let a=anioActual;a>=1900;a--){
+ys+=`<option value="${a}" ${a==y?"selected":""}>${a}</option>`;
+}
+
+let ms='<option value="">Mes</option>'+
+meses.map((x,i)=>`<option value="${i+1}" ${i+1==Number(m)?"selected":""}>${x}</option>`).join("");
+
+let ds='<option value="">Día</option>'+
+Array.from({length:31},(_,i)=>`<option value="${i+1}" ${i+1==Number(d)?"selected":""}>${i+1}</option>`).join("");
+
+return `
+<div class="fecha-grid">
+<select id="${prefijo}Dia">${ds}</select>
+<select id="${prefijo}Mes">${ms}</select>
+<select id="${prefijo}Anio">
+<option value="">Año</option>${ys}
+</select>
+</div>`;
+}
+
+function leerFecha(prefijo){
+let d=document.getElementById(prefijo+"Dia")?.value,
+m=document.getElementById(prefijo+"Mes")?.value,
+y=document.getElementById(prefijo+"Anio")?.value;
+
+return d&&m&&y
+?`${y}-${String(m).padStart(2,"0")}-${String(d).padStart(2,"0")}`
+:"";
+}
+
+function nuevoPaciente(){
+document.getElementById("app").innerHTML=`
+<div class="contenedor">
+<div class="tarjeta">
+
+<h2>👤 Nuevo paciente</h2>
+
+<label>Foto principal</label>
+<input type="file" id="foto" accept="image/*">
+
+<label>Apellido paterno</label>
+<input id="apellidoPaterno" placeholder="Apellido paterno">
+
+<label>Apellido materno</label>
+<input id="apellidoMaterno" placeholder="Apellido materno">
+
+<label>Nombres</label>
+<input id="nombres" placeholder="Nombres">
+
+<label>DNI</label>
+<input id="dni" maxlength="8" placeholder="DNI">
+
+<label>Teléfono</label>
+<input id="telefono" placeholder="Teléfono">
+
+<label>Fecha de nacimiento</label>
+${fechaSelects("fecha")}
+
+<label>Dirección</label>
+<input id="direccion" placeholder="Dirección">
+
+<label>Institución</label>
+<input id="institucion" placeholder="Institución">
+
+<label>Lugar de trabajo</label>
+<input id="lugarTrabajo" placeholder="Lugar de trabajo">
+
+<label>Observaciones</label>
+<textarea id="observaciones" placeholder="Observaciones"></textarea>
+
+<button class="boton-completo" onclick="guardarPaciente()">💾 Guardar paciente</button>
+<button class="boton-gris boton-completo" onclick="inicio()">⬅️ Volver</button>
+
+</div>
+</div>`;
+}
+
+function guardarPaciente(){
+
+let p={
+id:Date.now(),
+apellidoPaterno:document.getElementById("apellidoPaterno").value.trim(),
+apellidoMaterno:document.getElementById("apellidoMaterno").value.trim(),
+nombres:document.getElementById("nombres").value.trim(),
+dni:document.getElementById("dni").value.trim(),
+telefono:document.getElementById("telefono").value.trim(),
+fecha:leerFecha("fecha"),
+direccion:document.getElementById("direccion").value.trim(),
+institucion:document.getElementById("institucion").value.trim(),
+lugarTrabajo:document.getElementById("lugarTrabajo").value.trim(),
+observaciones:document.getElementById("observaciones").value.trim(),
+foto:"",
+fotos:["","","","",""],
+radiografias:Array(15).fill(""),
+odontograma:{},
+piezas:{},
+tipoOdontograma:"adulto",
+tratamientos:[],
+documentos:{
+consentimientos:{},
+contratos:[],
+constancias:{
+altaOdontologica:[],
+descansoOdontologico:[]
+}
+}
+};
+
+p.nombreCompleto=(p.apellidoPaterno+" "+p.apellidoMaterno+" "+p.nombres).trim();
+p.nombre=p.nombreCompleto;
+
+let f=document.getElementById("foto").files[0];
+
+if(f){
+
+let r=new FileReader();
+
+r.onload=e=>{
+p.foto=e.target.result;
+pacientes.push(p);
+guardarBaseDatos();
+
+alert("✅ Paciente guardado.");
+listaPacientes();
+
+subirFotoPrincipalDrive(p,f);
+};
+
+r.readAsDataURL(f);
+
+}else{
+
+pacientes.push(p);
+guardarBaseDatos();
+
+alert("✅ Paciente guardado.");
+listaPacientes();
+}
+}
+
+function listaPacientes(){
+
+let lista=[...pacientes];
+
+lista.sort((a,b)=>
+(a.apellidoPaterno||obtenerNombre(a))
+.localeCompare(
+b.apellidoPaterno||obtenerNombre(b),
+"es",
+{sensitivity:"base"}
+)
+);
+
+document.getElementById("app").innerHTML=`
+<div class="contenedor">
+
+<div class="tarjeta">
+<h2>📋 Ver pacientes</h2>
+<input id="buscar" placeholder="🔎 Buscar por nombre o DNI..." oninput="buscarPaciente()">
+</div>
+
+<div id="resultados">
+${lista.map(crearItemLista).join("")}
+${!lista.length?'<div class="tarjeta">No hay pacientes registrados.</div>':""}
+</div>
+
+<button class="boton-completo" onclick="nuevoPaciente()">➕ Agregar paciente</button>
+
+</div>`;
+}
+
+function crearItemLista(p){
+return `
+<div class="item-lista">
+<div>
+<strong>${obtenerNombre(p)}</strong>
+<br>DNI: ${p.dni||"—"}
+</div>
+<button class="boton-azul" onclick="verPaciente(${p.id})">📂</button>
+</div>`;
+}
+
+function buscarPaciente(){
+
+let t=document.getElementById("buscar").value.toLowerCase();
+
+let r=pacientes.filter(p=>
+obtenerNombre(p).toLowerCase().includes(t)||
+(p.dni||"").includes(t)
+);
+
+document.getElementById("resultados").innerHTML=
+r.length
+?r.map(crearItemLista).join("")
+:'<div class="tarjeta">No se encontró ningún paciente.</div>';
+}
+
+function prepararDatosPaciente(p){
+
+if(!p.fotos)p.fotos=["","","","",""];
+while(p.fotos.length<5)p.fotos.push("");
+
+if(!p.radiografias)p.radiografias=Array(15).fill("");
+while(p.radiografias.length<15)p.radiografias.push("");
+
+if(!p.odontograma)p.odontograma={};
+if(!p.piezas)p.piezas={};
+if(!p.tratamientos)p.tratamientos=[];
+if(!p.tipoOdontograma)p.tipoOdontograma="adulto";
+
+if(!p.documentos){
+p.documentos={
+consentimientos:{},
+contratos:[],
+constancias:{
+altaOdontologica:[],
+descansoOdontologico:[]
+}
+};
+}
+}
+
+function verPaciente(id){
+
+let p=pacientes.find(x=>x.id===id);
+
+if(!p)return;
+
+prepararDatosPaciente(p);
+pacienteActualId=id;
+marcarMenu("Anamnesis");
+
+let foto=p.foto
+?`<img src="${p.foto}" class="foto-principal" onclick="verFoto('${p.foto}')">`
+:`<div class="sin-foto">SIN FOTO</div>`;
+
+document.getElementById("app").innerHTML=`
+
+<div class="contenedor">
+
+<div class="tarjeta">
+
+<div class="seccion-anamnesis">📝 Anamnesis</div>
+
+<div class="datos-paciente">
+
+<div class="informacion-paciente">
+
+<h2>${obtenerNombre(p)}</h2>
+
+<div class="anamnesis-grid">
+
+<div class="anamnesis-item">
+<strong>DNI</strong>${p.dni||"—"}
+</div>
+
+<div class="anamnesis-item">
+<strong>Teléfono</strong>${p.telefono||"—"}
+</div>
+
+<div class="anamnesis-item">
+<strong>Fecha de nacimiento</strong>${p.fecha||"—"}
+</div>
+
+<div class="anamnesis-item">
+<strong>Dirección</strong>${p.direccion||"—"}
+</div>
+
+<div class="anamnesis-item">
+<strong>Institución</strong>${p.institucion||"—"}
+</div>
+
+<div class="anamnesis-item">
+<strong>Lugar de trabajo</strong>${p.lugarTrabajo||"—"}
+</div>
+
+</div>
+</div>
+
+<div class="foto-principal-contenedor">
+
+${foto}
+
+<div class="botones-foto">
+
+<button class="icono-pequeno boton-azul" onclick="agregarFotoPrincipal(${id})">➕</button>
+
+<button class="icono-pequeno boton-azul" onclick="editarPaciente(${id})">✏️</button>
+
+<button class="icono-pequeno boton-rojo" onclick="eliminarPaciente(${id})">🗑️</button>
+
+<button class="icono-pequeno boton-gris" onclick="listaPacientes()">↩️</button>
+
+</div>
+</div>
+</div>
+
+<input type="file" id="fotoPrincipalNueva" accept="image/*" style="display:none" onchange="guardarFotoPrincipal(${id})">
+
+<hr>
+
+<strong>Observaciones</strong>
+<p>${p.observaciones||"Sin observaciones"}</p>
+
+<button class="historia-boton boton-completo" onclick="historiaOrtodoncia(${id})">
+😬 Historia clínica de ortodoncia
+</button>
+
+<button class="historia-boton boton-completo" onclick="historiaEndodoncia(${id})">
+🦷 Historia clínica de endodoncia
+</button>
+
+</div>
+</div>`;
+}
+
+function agregarFotoPrincipal(){
+document.getElementById("fotoPrincipalNueva")?.click();
+}
+
+
+/* =========================================================
+   GOOGLE DRIVE
+   ========================================================= */
+
+function crearClienteTokenDrive(){
+
+driveTokenClient=google.accounts.oauth2.initTokenClient({
+
+client_id:GOOGLE_CLIENT_ID,
+
+scope:"https://www.googleapis.com/auth/drive.file",
+
+callback:(response)=>{
+
+if(response.error){
+console.error(response);
+return;
+}
+
+window.googleDriveAccessToken=response.access_token;
+
+driveTokenExpiry=Date.now()+((response.expires_in||3600)*1000);
+
+}
+
+});
+
+return driveTokenClient;
+}
+
+
+function obtenerTokenDrive(){
+
+return new Promise((resolve,reject)=>{
+
+if(window.googleDriveAccessToken &&
+Date.now()<driveTokenExpiry-60000){
+
+resolve(window.googleDriveAccessToken);
+return;
+}
+
+if(!driveTokenClient)crearClienteTokenDrive();
+
+driveTokenClient.callback=(response)=>{
+
+if(response.error){
+
+console.error(response);
+reject(response.error);
+return;
+}
+
+window.googleDriveAccessToken=response.access_token;
+
+driveTokenExpiry=Date.now()+((response.expires_in||3600)*1000);
+
+resolve(response.access_token);
+
+};
+
+driveTokenClient.requestAccessToken({prompt:""});
+
+});
+}
+
+
+async function conectarGoogleDrive(){
+
+try{
+
+if(!driveTokenClient)crearClienteTokenDrive();
+
+driveTokenClient.callback=(response)=>{
+
+if(response.error){
+
+alert("No se pudo conectar con Google Drive.");
+console.error(response);
+return;
+}
+
+window.googleDriveAccessToken=response.access_token;
+
+driveTokenExpiry=Date.now()+((response.expires_in||3600)*1000);
+
+alert("✅ Google Drive conectado correctamente.");
+
+};
+
+driveTokenClient.requestAccessToken();
+
+}catch(e){
+
+console.error(e);
+alert("No se pudo conectar con Google Drive.");
+
+}
+
+}
+
+
+async function crearCarpetaDrive(nombre,carpetaPadre=null){
+
+const token=await obtenerTokenDrive();
+
+let metadata={
+name:nombre,
+mimeType:"application/vnd.google-apps.folder"
+};
+
+if(carpetaPadre){
+metadata.parents=[carpetaPadre];
+}
+
+const respuesta=await fetch(
+"https://www.googleapis.com/drive/v3/files",
+{
+method:"POST",
+headers:{
+Authorization:"Bearer "+token,
+"Content-Type":"application/json"
+},
+body:JSON.stringify(metadata)
+}
+);
+
+if(!respuesta.ok){
+
+const texto=await respuesta.text();
+throw new Error(texto);
+
+}
+
+return await respuesta.json();
+
+}
+
+
+async function obtenerCarpetaPrincipalDrive(){
+
+let id=localStorage.getItem("driveRootFolderId");
+
+if(id)return id;
+
+const carpeta=await crearCarpetaDrive("Centro Odontológico San Luis");
+
+localStorage.setItem("driveRootFolderId",carpeta.id);
+
+return carpeta.id;
+
+}
+
+
+async function obtenerCarpetaPacienteDrive(p){
+
+if(p.driveFolderId)return p.driveFolderId;
+
+const principal=await obtenerCarpetaPrincipalDrive();
+
+const nombrePaciente=
+"Paciente_"+(p.dni||p.id);
+
+const carpeta=await crearCarpetaDrive(
+nombrePaciente,
+principal
+);
+
+p.driveFolderId=carpeta.id;
+
+guardarBaseDatos();
+
+return carpeta.id;
+
+}
+
+
+async function subirArchivoGoogleDrive(archivo,nombre,p){
+
+const carpetaPaciente=await obtenerCarpetaPacienteDrive(p);
+
+const token=await obtenerTokenDrive();
+
+const metadata={
+name:nombre,
+parents:[carpetaPaciente]
+};
+
+const formulario=new FormData();
+
+formulario.append(
+"metadata",
+new Blob(
+[JSON.stringify(metadata)],
+{type:"application/json"}
+)
+);
+
+formulario.append(
+"file",
+archivo,
+nombre
+);
+
+const respuesta=await fetch(
+"https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,webViewLink",
+{
+method:"POST",
+headers:{
+Authorization:"Bearer "+token
+},
+body:formulario
+}
+);
+
+if(!respuesta.ok){
+
+const texto=await respuesta.text();
+throw new Error(texto);
+
+}
+
+return await respuesta.json();
+
+}
+
+
+async function subirFotoPrincipalDrive(p,f){
+
+try{
+
+const nombre=
+"foto_principal_"+p.id+"_"+Date.now()+"."+(
+f.name.split(".").pop()||"jpg"
+);
+
+const resultado=
+await subirArchivoGoogleDrive(
+f,
+nombre,
+p
+);
+
+p.driveFotoPrincipal={
+id:resultado.id,
+name:resultado.name,
+webViewLink:resultado.webViewLink||""
+};
+
+guardarBaseDatos();
+
+console.log("Foto principal guardada en Google Drive.");
+
+}catch(e){
+
+console.error("Error subiendo foto principal:",e);
+
+}
+
+}
+
+
+async function guardarFotoPrincipal(id){
+
+let p=pacientes.find(x=>x.id===id);
+
+let f=document.getElementById("fotoPrincipalNueva")?.files[0];
+
+if(!p||!f)return;
+
+let r=new FileReader();
+
+r.onload=async e=>{
+
+p.foto=e.target.result;
+
+guardarBaseDatos();
+
+verPaciente(id);
+
+try{
+
+await subirFotoPrincipalDrive(p,f);
+
+alert("☁️ Foto principal guardada también en Google Drive.");
+
+}catch(error){
+
+console.error(error);
+
+alert("⚠️ La foto quedó guardada en la aplicación, pero no se pudo subir a Google Drive.");
+
+}
+
+};
+
+r.readAsDataURL(f);
+
+}
+
+
+/* =========================================================
+   EDITAR PACIENTE
+   ========================================================= */
+
+function editarPaciente(id){
+
+let p=pacientes.find(x=>x.id===id);
+
+if(!p)return;
+
+document.getElementById("app").innerHTML=`
+
+<div class="contenedor">
+<div class="tarjeta">
+
+<h2>✏️ Editar paciente</h2>
+
+<label>Apellido paterno</label>
+<input id="editarApellidoPaterno" value="${p.apellidoPaterno||""}">
+
+<label>Apellido materno</label>
+<input id="editarApellidoMaterno" value="${p.apellidoMaterno||""}">
+
+<label>Nombres</label>
+<input id="editarNombres" value="${p.nombres||""}">
+
+<label>DNI</label>
+<input id="editarDni" value="${p.dni||""}" maxlength="8">
+
+<label>Teléfono</label>
+<input id="editarTelefono" value="${p.telefono||""}">
+
+<label>Fecha de nacimiento</label>
+${fechaSelects("editarFecha",p.fecha||"")}
+
+<label>Dirección</label>
+<input id="editarDireccion" value="${p.direccion||""}">
+
+<label>Institución</label>
+<input id="editarInstitucion" value="${p.institucion||""}">
+
+<label>Lugar de trabajo</label>
+<input id="editarLugarTrabajo" value="${p.lugarTrabajo||""}">
+
+<label>Observaciones</label>
+<textarea id="editarObservaciones">${p.observaciones||""}</textarea>
+
+<button class="boton-azul boton-completo" onclick="actualizarPaciente(${id})">
+💾 Guardar cambios
+</button>
+
+<button class="boton-gris boton-completo" onclick="verPaciente(${id})">
+⬅️ Cancelar
+</button>
+
+</div>
+</div>`;
+}
+
+function actualizarPaciente(id){
+
+let p=pacientes.find(x=>x.id===id);
+
+if(!p)return;
+
+p.apellidoPaterno=document.getElementById("editarApellidoPaterno").value.trim();
+p.apellidoMaterno=document.getElementById("editarApellidoMaterno").value.trim();
+p.nombres=document.getElementById("editarNombres").value.trim();
+
+p.nombreCompleto=
+(p.apellidoPaterno+" "+p.apellidoMaterno+" "+p.nombres).trim();
+
+p.nombre=p.nombreCompleto;
+
+p.dni=document.getElementById("editarDni").value.trim();
+p.telefono=document.getElementById("editarTelefono").value.trim();
+p.fecha=leerFecha("editarFecha");
+p.direccion=document.getElementById("editarDireccion").value.trim();
+p.institucion=document.getElementById("editarInstitucion").value.trim();
+p.lugarTrabajo=document.getElementById("editarLugarTrabajo").value.trim();
+p.observaciones=document.getElementById("editarObservaciones").value.trim();
+
+guardarBaseDatos();
+
+alert("✅ Cambios guardados.");
+
+verPaciente(id);
+}
+
+function eliminarPaciente(id){
+
+let p=pacientes.find(x=>x.id===id);
+
+if(!p||!confirm("¿Eliminar a "+obtenerNombre(p)+"?"))return;
+
+pacientes=pacientes.filter(x=>x.id!==id);
+
+guardarBaseDatos();
+
+listaPacientes();
+}
+
+function irAnamnesis(){
+pacienteActualId?verPaciente(pacienteActualId):anamnesis();
+}
+
+function anamnesis(){
+
+marcarMenu("Anamnesis");
+
+document.getElementById("app").innerHTML=`
+
+<div class="contenedor">
+
+<div class="tarjeta">
+
+<h2>📝 Anamnesis</h2>
+
+<p>Selecciona un paciente para revisar su información.</p>
+
+<input id="buscarAnamnesis"
+placeholder="🔎 Buscar por DNI o apellidos"
+oninput="filtrarAnamnesis()">
+
+</div>
+
+<div id="listaAnamnesis">
+${pacientes.map(crearItemLista).join("")}
+</div>
+
+</div>`;
+}
+
+function filtrarAnamnesis(){
+
+let t=document.getElementById("buscarAnamnesis").value.toLowerCase();
+
+let l=pacientes.filter(p=>
+(p.apellidoPaterno+" "+p.apellidoMaterno).toLowerCase().includes(t)||
+(p.dni||"").includes(t)
+);
+
+document.getElementById("listaAnamnesis").innerHTML=
+l.length
+?l.map(crearItemLista).join("")
+:'<div class="tarjeta">No se encontró ningún paciente.</div>';
+}
+
+function historiaOrtodoncia(id){
+pacienteActualId=id;
+mostrarHistoriaClinica(id,"ortodoncia");
+}
+
+function historiaEndodoncia(id){
+pacienteActualId=id;
+mostrarHistoriaClinica(id,"endodoncia");
+}
+
+function mostrarHistoriaClinica(id,esp){
+
+let p=pacientes.find(x=>x.id===id);
+
+if(!p)return;
+
+prepararDatosPaciente(p);
+
+pacienteActualId=id;
+
+marcarMenu(
+esp==="ortodoncia"
+?"Ortodoncia"
+:"Endodoncia"
+);
+
+document.getElementById("app").innerHTML=`
+
+<div class="contenedor">
+
+<div class="tarjeta">
+
+<h2>📝 Anamnesis</h2>
+
+<label>DNI</label>
+
+<select onchange="cambiarPacienteEspecialidad(this.value,'${esp}')">
+
+${pacientes.map(x=>
+`<option value="${x.id}" ${x.id===id?"selected":""}>
+${x.dni||"Sin DNI"} — ${obtenerNombre(x)}
+</option>`
+).join("")}
+
+</select>
+
+<h2>${obtenerNombre(p)}</h2>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>🦷 Odontograma</h2>
+
+<div class="selector-odontograma">
+
+<label style="margin:0">Tipo:</label>
+
+<select onchange="cambiarTipoOdontograma(${id},this.value)">
+
+<option value="adulto" ${p.tipoOdontograma==="adulto"?"selected":""}>Adulto</option>
+
+<option value="nino" ${p.tipoOdontograma==="nino"?"selected":""}>Niño</option>
+
+<option value="mixto" ${p.tipoOdontograma==="mixto"?"selected":""}>Mixto</option>
+
+</select>
+
+</div>
+
+<div class="odontograma-pequeno">
+${crearOdontograma(p)}
+</div>
+
+<button class="boton-azul boton-completo" onclick="abrirOdontograma(${id})">
+🔍 Abrir odontograma
+</button>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>📷 Fotos</h2>
+
+<div class="fotos-grid">
+
+${crearFotoBox(p.fotos[0],"foto-izq1","Oclusal superior")}
+
+${crearFotoBox(p.fotos[1],"foto-izq2","Oclusal inferior")}
+
+${crearFotoBox(p.fotos[2],"foto-central","Frontal")}
+
+${crearFotoBox(p.fotos[3],"foto-der1","Lateral izquierdo")}
+
+${crearFotoBox(p.fotos[4],"foto-der2","Lateral derecho")}
+
+</div>
+
+<br>
+
+<label>Agregar fotos</label>
+
+<input
+type="file"
+id="nuevasFotos"
+accept="image/*"
+multiple
+onchange="agregarFotos(${id})">
+
+</div>
+
+<div class="tarjeta">
+
+<h2>🩻 Radiografías</h2>
+
+<div class="radio-contenedor">
+
+<div class="radiografias">
+${crearRadiografias(p)}
+</div>
+
+</div>
+
+<br>
+
+<label>Agregar radiografías</label>
+
+<input
+type="file"
+id="nuevasRadiografias"
+accept="image/*"
+multiple
+onchange="agregarRadiografias(${id})">
+
+</div>
+
+<div class="tarjeta">
+
+<h2>📋 Tratamiento</h2>
+
+<div class="tabla-contenedor">
+
+<table class="tabla-tratamiento">
+
+<thead>
+<tr>
+<th>Fecha</th>
+<th>Tratamiento</th>
+<th>A cuenta</th>
+<th>Pagó</th>
+</tr>
+</thead>
+
+<tbody id="tablaTratamiento">
+${crearFilasTratamiento(p)}
+</tbody>
+
+</table>
+
+</div>
+
+<button class="boton-azul boton-completo" onclick="agregarTratamiento(${id})">
+➕ Agregar tratamiento
+</button>
+
+<button class="boton-completo" onclick="guardarTratamientos(${id})">
+💾 Guardar tratamiento
+</button>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>📄 Documentos</h2>
+
+${documentosPaciente(id)}
+
+</div>
+
+<button class="boton-gris boton-completo" onclick="verPaciente(${id})">
+⬅️ Volver al paciente
+</button>
+
+</div>`;
+}
+
+function cambiarPacienteEspecialidad(id,e){
+
+if(id){
+pacienteActualId=Number(id);
+mostrarHistoriaClinica(Number(id),e);
+}
+
+}
+
+function crearOdontograma(p){
+
+let a=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
+
+let b=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
+
+let an=[55,54,53,52,51,61,62,63,64,65];
+
+let bn=[75,74,73,72,71,81,82,83,84,85];
+
+if(p.tipoOdontograma==="adulto")
+return `
+<div class="fila-dientes">${a.map(n=>crearDiente(p,n)).join("")}</div>
+<div class="fila-dientes">${b.map(n=>crearDiente(p,n)).join("")}</div>`;
+
+if(p.tipoOdontograma==="nino")
+return `
+<div class="fila-dientes">${an.map(n=>crearDiente(p,n)).join("")}</div>
+<div class="fila-dientes">${bn.map(n=>crearDiente(p,n)).join("")}</div>`;
+
+return `
+<div class="fila-dientes">${a.map(n=>crearDiente(p,n)).join("")}</div>
+<div class="fila-dientes">${an.map(n=>crearDiente(p,n)).join("")}</div>
+<div class="fila-dientes">${bn.map(n=>crearDiente(p,n)).join("")}</div>
+<div class="fila-dientes">${b.map(n=>crearDiente(p,n)).join("")}</div>`;
+}
+
+function esDienteNino(n){
+
+return(
+(n>=51&&n<=55)||
+(n>=61&&n<=65)||
+(n>=71&&n<=75)||
+(n>=81&&n<=85)
+);
+
+}
+
+function crearDiente(p,n){
+
+return `
+<button
+class="diente ${esDienteNino(n)?"nino":"adulto"} ${p.odontograma[n]?"seleccionado":""}"
+onclick="seleccionarDienteRapido(${p.id},${n})">
+${n}
+</button>`;
+}
+
+function cambiarTipoOdontograma(id,t){
+
+let p=pacientes.find(x=>x.id===id);
+
+if(!p)return;
+
+p.tipoOdontograma=t;
+
+guardarBaseDatos();
+
+mostrarHistoriaClinica(id,"ortodoncia");
+}
+
+function crearFotoBox(src,c,n){
+
+return src
+?`<div class="foto-box ${c}">
+<img src="${src}" onclick="verFoto('${src}')">
+</div>`
+:`<div class="foto-box ${c}">${n}</div>`;
+}
+
+
+/* =========================================================
+   FOTOS -> LOCAL + GOOGLE DRIVE
+   ========================================================= */
+
+async function agregarFotos(id){
+
+let p=pacientes.find(x=>x.id===id);
+
+if(!p)return;
+
+let input=document.getElementById("nuevasFotos");
+
+if(!input)return;
+
+let fs=Array.from(input.files);
+
+let pos=[];
+
+for(let i=0;i<5;i++){
+if(!p.fotos[i])pos.push(i);
+}
+
+let q=Math.min(fs.length,pos.length);
+
+if(!q){
+alert("Ya tienes 5 fotos.");
+return;
+}
+
+let archivos=fs.slice(0,q);
+
+let guardadas=0;
+let subidas=0;
+
+for(let i=0;i<q;i++){
+
+let f=archivos[i];
+let k=pos[i];
+
+let r=new FileReader();
+
+r.onload=async e=>{
+
+p.fotos[k]=e.target.result;
+
+guardadas++;
+
+guardarBaseDatos();
+
+try{
+
+let extension=
+f.name.includes(".")
+?f.name.split(".").pop()
+:"jpg";
+
+let nombre=
+"foto_"+(k+1)+"_"+p.id+"_"+Date.now()+"."+extension;
+
+let resultado=
+await subirArchivoGoogleDrive(
+f,
+nombre,
+p
+);
+
+if(!p.driveFotos)p.driveFotos={};
+
+p.driveFotos[k]={
+id:resultado.id,
+name:resultado.name,
+webViewLink:resultado.webViewLink||""
+};
+
+subidas++;
+
+guardarBaseDatos();
+
+}catch(error){
+
+console.error("Error subiendo foto:",error);
+
+}
+
+if(guardadas===q){
+
+mostrarHistoriaClinica(id,"ortodoncia");
+
+if(subidas===q){
+
+alert("📷 Fotos guardadas y copiadas a Google Drive.");
+
+}else{
+
+alert("📷 Fotos guardadas en la aplicación.\n⚠️ Algunas no pudieron subirse a Google Drive.");
+
+}
+
+}
+
+};
+
+r.readAsDataURL(f);
+}
+
+}
+
+
+/* =========================================================
+   RADIOGRAFÍAS -> LOCAL + GOOGLE DRIVE
+   ========================================================= */
+
+async function agregarRadiografias(id){
+
+let p=pacientes.find(x=>x.id===id);
+
+if(!p)return;
+
+let input=document.getElementById("nuevasRadiografias");
+
+if(!input)return;
+
+let fs=Array.from(input.files);
+
+let pos=[];
+
+for(let i=0;i<15;i++){
+
+if(!p.radiografias[i])pos.push(i);
+
+}
+
+let q=Math.min(fs.length,pos.length);
+
+if(!q){
+
+alert("Ya tienes las 15 radiografías.");
+
+return;
+}
+
+let archivos=fs.slice(0,q);
+
+let guardadas=0;
+let subidas=0;
+
+for(let i=0;i<q;i++){
+
+let f=archivos[i];
+
+let k=pos[i];
+
+let r=new FileReader();
+
+r.onload=async e=>{
+
+p.radiografias[k]=e.target.result;
+
+guardadas++;
+
+guardarBaseDatos();
+
+try{
+
+let extension=
+f.name.includes(".")
+?f.name.split(".").pop()
+:"jpg";
+
+let nombre=
+"radiografia_"+(k+1)+"_"+p.id+"_"+Date.now()+"."+extension;
+
+let resultado=
+await subirArchivoGoogleDrive(
+f,
+nombre,
+p
+);
+
+if(!p.driveRadiografias)p.driveRadiografias={};
+
+p.driveRadiografias[k]={
+id:resultado.id,
+name:resultado.name,
+webViewLink:resultado.webViewLink||""
+};
+
+subidas++;
+
+guardarBaseDatos();
+
+}catch(error){
+
+console.error("Error subiendo radiografía:",error);
+
+}
+
+if(guardadas===q){
+
+mostrarHistoriaClinica(id,"ortodoncia");
+
+if(subidas===q){
+
+alert("🩻 Radiografías guardadas y copiadas a Google Drive.");
+
+}else{
+
+alert("🩻 Radiografías guardadas en la aplicación.\n⚠️ Algunas no pudieron subirse a Google Drive.");
+
+}
+
+}
+
+};
+
+r.readAsDataURL(f);
+
+}
+
+}
+
+function crearRadiografias(p){
+
+let h="";
+
+for(let i=0;i<15;i++){
+
+let c=
+i<7
+?"radio-top"
+:i===7
+?"radio-central"
+:"radio-bottom";
+
+h+=
+p.radiografias[i]
+?
+`<div class="radiografia ${c}">
+<img src="${p.radiografias[i]}" onclick="verFoto('${p.radiografias[i]}')">
+</div>`
+:
+`<div class="radiografia ${c}">
+${i===7?"PANORÁMICA":i+1}
+</div>`;
+}
+
+return h;
+}
+
+
+/* =========================================================
+   TRATAMIENTOS
+   ========================================================= */
+
+function crearFilasTratamiento(p){
+
+if(!p.tratamientos.length)
+return '<tr><td colspan="4" style="text-align:center">No hay tratamientos registrados.</td></tr>';
+
+return p.tratamientos.map(t=>`
+
+<tr>
+
+<td>
+<input type="date" class="trat-fecha" value="${t.fecha||""}">
+</td>
+
+<td>
+<input class="trat-nombre" value="${t.tratamiento||""}">
+</td>
+
+<td>
+<input type="number" class="trat-cuenta" value="${t.cuenta||""}">
+</td>
+
+<td>
+<input type="number" class="trat-pago" value="${t.pago||""}">
+</td>
+
+</tr>`).join("");
+}
+
+function agregarTratamiento(id){
+
+let p=pacientes.find(x=>x.id===id);
+
+p.tratamientos.push({
+fecha:"",
+tratamiento:"",
+cuenta:"",
+pago:""
+});
+
+guardarBaseDatos();
+
+mostrarHistoriaClinica(id,"ortodoncia");
+}
+
+function guardarTratamientos(id){
+
+let p=pacientes.find(x=>x.id===id);
+
+let t=[];
+
+document.querySelectorAll("#tablaTratamiento tr").forEach(r=>{
+
+let f=r.querySelector(".trat-fecha");
+
+if(f){
+
+t.push({
+fecha:f.value,
+tratamiento:r.querySelector(".trat-nombre").value,
+cuenta:r.querySelector(".trat-cuenta").value,
+pago:r.querySelector(".trat-pago").value
+});
+
+}
+
+});
+
+p.tratamientos=t;
+
+guardarBaseDatos();
+
+alert("✅ Tratamiento guardado.");
+}
+
+
+/* =========================================================
+   DOCUMENTOS
+   ========================================================= */
+
+function documentosPaciente(id){
+
+return `
+<div class="documento-grupo">
+
+<button class="documento-titulo" onclick="alternarDocumento('d${id}')">
+Documentos ▼
+</button>
+
+<div id="d${id}" class="documento-contenido">
+
+${[
+"Consentimiento informado de Ortodoncia",
+"Consentimiento informado de Endodoncia",
+"Consentimiento informado de Cirugía",
+"Consentimiento informado de Implantología",
+"Consentimiento informado de Otra especialidad",
+"Boleta de tratamiento",
+"Alta odontológica",
+"Descanso odontológico"
+]
+.map((n,i)=>crearDocumento(n,i<5?"🦷":"📄")).join("")}
+
+</div>
+</div>`;
+}
+
+function crearDocumento(n,i){
+
+return `
+<div class="documento-opcion">
+
+<span>${i} ${n}</span>
+
+<button class="boton-azul" onclick="descargarDocumentoTexto('${n}')">
+📥 Descargar
+</button>
+
+</div>`;
+}
+
+function alternarDocumento(id){
+
+document.getElementById(id)?.classList.toggle("abierto");
+
+}
+
+function descargarDocumentoTexto(n){
+
+let a=document.createElement("a");
+
+let u=URL.createObjectURL(
+new Blob(
+[
+n+
+"\n\nCentro Odontológico San Luis\n\nDocumento para impresión."
+],
+{type:"text/plain;charset=utf-8"}
+)
+);
+
+a.href=u;
+
+a.download=
+n.replaceAll(" ","_")+".txt";
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
+
+URL.revokeObjectURL(u);
+
+}
+
+
+/* =========================================================
+   ODONTOGRAMA
+   ========================================================= */
+
+function abrirOdontograma(id){
+
+let p=pacientes.find(x=>x.id===id);
+
+pacienteOdontogramaActual=id;
+
+tipoOdontogramaActual=p.tipoOdontograma||"adulto";
+
+document.getElementById("tipoOdontogramaModal").value=
+tipoOdontogramaActual;
+
+mostrarOdontogramaGrande();
+
+document.getElementById("datosDiente").innerHTML="";
+
+document.getElementById("modalOdontograma").style.display="flex";
+}
+
+function mostrarOdontogramaGrande(){
+
+let p=pacientes.find(x=>x.id===pacienteOdontogramaActual);
+
+let a=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
+
+let b=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
+
+let an=[55,54,53,52,51,61,62,63,64,65];
+
+let bn=[75,74,73,72,71,81,82,83,84,85];
+
+let h="";
+
+if(tipoOdontogramaActual==="adulto")
+h=crearFilaGrande(p,a)+"<hr>"+crearFilaGrande(p,b);
+
+else if(tipoOdontogramaActual==="nino")
+h=crearFilaGrande(p,an)+"<hr>"+crearFilaGrande(p,bn);
+
+else
+h=
+crearFilaGrande(p,a)+
+crearFilaGrande(p,an)+
+"<hr>"+
+crearFilaGrande(p,bn)+
+crearFilaGrande(p,b);
+
+document.getElementById("odontogramaGrande").innerHTML=h;
+}
+
+function crearFilaGrande(p,n){
+
+return `
+<div class="fila-grande">
+${n.map(x=>crearDienteGrande(p,x)).join("")}
+</div>`;
+}
+
+function crearDienteGrande(p,n){
+
+return `
+<button
+class="diente-grande ${esDienteNino(n)?"nino":"adulto"} ${p.odontograma[n]?"seleccionado":""}"
+onclick="seleccionarDiente(${p.id},${n})">
+
+🦷
+
+<span class="diente-numero">${n}</span>
+
+</button>`;
+}
+
+function cambiarTipoOdontogramaModal(){
+
+tipoOdontogramaActual=
+document.getElementById("tipoOdontogramaModal").value;
+
+let p=pacientes.find(x=>x.id===pacienteOdontogramaActual);
+
+if(p){
+
+p.tipoOdontograma=tipoOdontogramaActual;
+
+guardarBaseDatos();
+
+}
+
+mostrarOdontogramaGrande();
+
+document.getElementById("datosDiente").innerHTML="";
+}
+
+function seleccionarDiente(id,n){
+
+let p=pacientes.find(x=>x.id===id);
+
+p.odontograma[n]=!p.odontograma[n];
+
+guardarBaseDatos();
+
+mostrarOdontogramaGrande();
+
+mostrarDatosDiente(id,n);
+}
+
+function seleccionarDienteRapido(id,n){
+
+let p=pacientes.find(x=>x.id===id);
+
+p.odontograma[n]=!p.odontograma[n];
+
+guardarBaseDatos();
+}
+
+function mostrarDatosDiente(id,n){
+
+let p=pacientes.find(x=>x.id===id);
+
+let a=p.piezas[n]||{};
+
+document.getElementById("datosDiente").innerHTML=`
+
+<div class="estado-pieza">
+
+<h3>🦷 Pieza ${n}</h3>
+
+<label>Estado</label>
+
+<select id="estadoPieza">
+
+<option value="">Seleccionar</option>
+
+${[
+"Sana",
+"Caries",
+"Restauración",
+"Corona",
+"Implante",
+"Endodoncia",
+"Ausente"
+].map(x=>
+`<option ${a.estado===x?"selected":""}>${x}</option>`
+).join("")}
+
+</select>
+
+<label>Observación</label>
+
+<textarea id="observacionPieza">${a.observacion||""}</textarea>
+
+<button class="boton-azul boton-completo" onclick="guardarDatosDiente(${id},${n})">
+💾 Guardar pieza ${n}
+</button>
+
+</div>`;
+}
+
+function guardarDatosDiente(id,n){
+
+let p=pacientes.find(x=>x.id===id);
+
+p.piezas[n]={
+estado:document.getElementById("estadoPieza").value,
+observacion:document.getElementById("observacionPieza").value
+};
+
+guardarBaseDatos();
+
+alert("✅ Pieza "+n+" guardada.");
+}
+
+function cerrarOdontograma(){
+
+document.getElementById("modalOdontograma").style.display="none";
+
+}
+
+function verFoto(s){
+
+document.getElementById("imagenGrande").src=s;
+
+document.getElementById("visorFoto").style.display="flex";
+
+}
+
+function cerrarFoto(){
+
+document.getElementById("visorFoto").style.display="none";
+
+}
+
+
+/* =========================================================
+   ORTODONCIA
+   ========================================================= */
+
+function ortodoncia(){
+
+marcarMenu("Ortodoncia");
+
+let l=[...pacientes];
+
+ordenarPacientes(l);
+
+document.getElementById("app").innerHTML=`
+
+<div class="contenedor">
+
+<div class="tarjeta">
+
+<input
+id="buscarOrtodoncia"
+placeholder="🔎 Buscar por DNI o apellidos"
+oninput="filtrarOrtodoncia()">
+
+</div>
+
+<div class="tarjeta">
+
+<div class="tabla-contenedor" id="tablaOrtodoncia">
+${crearTablaOrtodoncia(l)}
+</div>
+
+</div>
+
+</div>`;
+}
+
+function crearTablaOrtodoncia(l){
+
+let flecha=c=>
+columnaOrden===c
+?(direccionOrden==="asc"?" ▲":" ▼")
+:"";
+
+return `
+<table class="tabla-ortodoncia">
+
+<thead>
+
+<tr>
+
+<th onclick="ordenarPor('apellidoPaterno')">
+Apellido paterno${flecha("apellidoPaterno")}
+</th>
+
+<th onclick="ordenarPor('apellidoMaterno')">
+Apellido materno${flecha("apellidoMaterno")}
+</th>
+
+<th onclick="ordenarPor('nombres')">
+Nombres${flecha("nombres")}
+</th>
+
+<th onclick="ordenarPor('dni')">
+DNI${flecha("dni")}
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${l.map(p=>
+`<tr onclick="historiaOrtodoncia(${p.id})">
+
+<td>${p.apellidoPaterno||"—"}</td>
+<td>${p.apellidoMaterno||"—"}</td>
+<td>${p.nombres||"—"}</td>
+<td>${p.dni||"—"}</td>
+
+</tr>`
+).join("")}
+
+</tbody>
+
+</table>`;
+}
+
+function obtenerValorOrden(p){
+
+return(p[columnaOrden]||"").toString().toLowerCase();
+
+}
+
+function ordenarPacientes(l){
+
+l.sort(
+(a,b)=>
+obtenerValorOrden(a).localeCompare(
+obtenerValorOrden(b),
+"es",
+{numeric:true,sensitivity:"base"}
+)*
+(direccionOrden==="asc"?1:-1)
+);
+
+}
+
+function ordenarPor(c){
+
+if(columnaOrden===c)
+direccionOrden=direccionOrden==="asc"?"desc":"asc";
+
+else{
+
+columnaOrden=c;
+direccionOrden="asc";
+
+}
+
+actualizarTablaOrtodoncia();
+
+}
+
+function actualizarTablaOrtodoncia(){
+
+let t=
+document.getElementById("buscarOrtodoncia")?.value.toLowerCase()||"";
+
+let l=pacientes.filter(p=>
+(p.apellidoPaterno+" "+p.apellidoMaterno).toLowerCase().includes(t)||
+(p.dni||"").includes(t)
+);
+
+ordenarPacientes(l);
+
+document.getElementById("tablaOrtodoncia").innerHTML=
+crearTablaOrtodoncia(l);
+
+}
+
+function filtrarOrtodoncia(){
+actualizarTablaOrtodoncia();
+}
+
+
+/* =========================================================
+   ENDODONCIA
+   ========================================================= */
+
+function endodoncia(){
+
+marcarMenu("Endodoncia");
+
+document.getElementById("app").innerHTML=`
+
+<div class="contenedor">
+
+<div class="tarjeta">
+
+<input
+id="buscarEndodoncia"
+placeholder="🔎 Buscar por DNI o apellidos"
+oninput="filtrarEndodoncia()">
+
+</div>
+
+<div id="listaEndodoncia">
+
+${pacientes.map(p=>crearItemListaEndo(p)).join("")}
+
+</div>
+
+</div>`;
+}
+
+function crearItemListaEndo(p){
+
+return `
+<div class="item-lista">
+
+<div>
+<strong>${obtenerNombre(p)}</strong>
+<br>
+DNI: ${p.dni||"—"}
+</div>
+
+<button class="boton-azul" onclick="historiaEndodoncia(${p.id})">
+📂
+</button>
+
+</div>`;
+}
+
+function filtrarEndodoncia(){
+
+let t=
+document.getElementById("buscarEndodoncia").value.toLowerCase();
+
+let l=pacientes.filter(p=>
+(p.apellidoPaterno+" "+p.apellidoMaterno).toLowerCase().includes(t)||
+(p.dni||"").includes(t)
+);
+
+document.getElementById("listaEndodoncia").innerHTML=
+l.length
+?l.map(crearItemListaEndo).join("")
+:'<div class="tarjeta">No se encontró ningún paciente.</div>';
+
+}
+
+
+/* =========================================================
+   DOCUMENTOS
+   ========================================================= */
+
+function documentos(){
+
+marcarMenu("Documentos");
+
+document.getElementById("app").innerHTML=`
+
+<div class="contenedor">
+
+<div class="tarjeta">
+
+<h2>📄 Documentos</h2>
+
+${[
+"Consentimientos informados",
+"Boletas",
+"Constancias"
+].map((x,i)=>
+
+`
+<div class="documento-grupo">
+
+<button
+class="documento-titulo"
+onclick="alternarDocumento('g${i}')">
+
+${x} ▼
+
+</button>
+
+<div id="g${i}" class="documento-contenido">
+
+${(
+i===0
+?
+[
+"Consentimiento informado de Ortodoncia",
+"Consentimiento informado de Cirugía",
+"Consentimiento informado de Endodoncia",
+"Consentimiento informado de Implantología",
+"Consentimiento informado de Otra especialidad"
+]
+:
+i===1
+?
+["Boleta de tratamiento"]
+:
+["Alta odontológica","Descanso odontológico"]
+)
+.map(n=>crearDocumento(n,"📄")).join("")}
+
+</div>
+
+</div>
+`
+).join("")}
+
+</div>
+
+</div>`;
+}
+
+
+/* =========================================================
+   CITAS
+   ========================================================= */
+
+function citas(){
+
+marcarMenu("Citas");
+
+let h=[];
+
+for(let x=8;x<=20;x++){
+
+h.push(x+":00");
+
+if(x<20)h.push(x+":30");
+
+}
+
+document.getElementById("app").innerHTML=`
+
+<div class="contenedor">
+
+<div class="tarjeta">
+
+<h2>📅 Citas</h2>
+
+<label>Fecha</label>
+
+<input
+type="date"
+id="fechaCitas"
+value="${new Date().toISOString().slice(0,10)}"
+onchange="cargarCitas()">
+
+</div>
+
+<div class="tarjeta">
+
+<div class="tabla-contenedor">
+
+<table class="tabla-citas">
+
+<thead>
+
+<tr>
+<th>Hora</th>
+<th>Paciente</th>
+<th>Tratamiento a realizar</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+${h.map(x=>
+
+`
+<tr>
+
+<td class="hora-cita">${x}</td>
+
+<td>
+<input
+data-cita-hora="${x}"
+data-cita-campo="paciente"
+placeholder="Nombre del paciente">
+</td>
+
+<td>
+<input
+data-cita-hora="${x}"
+data-cita-campo="tratamiento"
+placeholder="Tratamiento">
+</td>
+
+</tr>
+`
+).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+<button class="boton-azul boton-completo" onclick="guardarCitas()">
+💾 Guardar citas
+</button>
+
+</div>
+
+</div>`;
+
+cargarCitas();
+
+}
+
+function claveCitas(){
+
+return "citas_"+document.getElementById("fechaCitas").value;
+
+}
+
+function guardarCitas(){
+
+let d={};
+
+document.querySelectorAll("[data-cita-hora]").forEach(i=>{
+
+d[i.dataset.citaHora]??={};
+
+d[i.dataset.citaHora][i.dataset.citaCampo]=i.value;
+
+});
+
+localStorage.setItem(
+claveCitas(),
+JSON.stringify(d)
+);
+
+alert("✅ Citas guardadas.");
+
+}
+
+function cargarCitas(){
+
+let d=
+JSON.parse(
+localStorage.getItem(claveCitas())||"{}"
+);
+
+document.querySelectorAll("[data-cita-hora]").forEach(i=>
+
+i.value=
+d[i.dataset.citaHora]?.[i.dataset.citaCampo]||""
+
+);
+
+}
+
+
+/* =========================================================
+   RESPALDO
+   ========================================================= */
+
+function respaldo(){
+
+marcarMenu("Respaldo");
+
+document.getElementById("app").innerHTML=`
+
+<div class="contenedor">
+
+<div class="tarjeta">
+
+<h2>💾 Respaldo</h2>
+
+<p>
+Pacientes registrados:
+<strong>${pacientes.length}</strong>
+</p>
+
+<button class="boton-azul boton-completo" onclick="crearRespaldo()">
+📥 Crear respaldo
+</button>
+
+</div>
+
+</div>`;
+}
+
+function crearRespaldo(){
+
+let a=document.createElement("a");
+
+let u=URL.createObjectURL(
+new Blob(
+[JSON.stringify(pacientes,null,2)],
+{type:"application/json"}
+)
+);
+
+a.href=u;
+
+a.download=
+"respaldo_centro_odontologico_san_luis.json";
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
+
+URL.revokeObjectURL(u);
+
+alert("✅ Respaldo creado.");
+
+}
+
+
+/* =========================================================
+   INICIO
+   ========================================================= */
+
+inicio();
+
 </script>
+
 </body>
 </html>
