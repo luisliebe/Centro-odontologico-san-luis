@@ -53,6 +53,9 @@ const GOOGLE_CLIENT_ID = "871933422694-bn62kang02ucd14pqboj673f18bkhtlu.apps.goo
 </script>
 </head>
 <body>
+  <button onclick="conectarGoogleDrive()" style="margin:10px;padding:10px 15px;border:0;border-radius:8px;background:#4285F4;color:white;font-weight:bold;">
+☁️ Conectar Google Drive
+</button>
 <header><h1>Centro Odontológico<span>"San Luis"</span></h1></header>
 <div id="app"></div>
 <div class="menu-inferior">
@@ -133,6 +136,24 @@ function cargarCitas(){let d=JSON.parse(localStorage.getItem(claveCitas())||"{}"
 function respaldo(){marcarMenu("Respaldo");document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>💾 Respaldo</h2><p>Pacientes registrados: <strong>${pacientes.length}</strong></p><button class="boton-azul boton-completo" onclick="crearRespaldo()">📥 Crear respaldo</button></div></div>`}
 function crearRespaldo(){let a=document.createElement("a"),u=URL.createObjectURL(new Blob([JSON.stringify(pacientes,null,2)],{type:"application/json"}));a.href=u;a.download="respaldo_centro_odontologico_san_luis.json";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u);alert("✅ Respaldo creado.")}
 inicio();
+function conectarGoogleDrive() {
+  const tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: GOOGLE_CLIENT_ID,
+    scope: "https://www.googleapis.com/auth/drive.file",
+    callback: (response) => {
+      if (response.error) {
+        alert("No se pudo conectar con Google Drive.");
+        console.error(response);
+        return;
+      }
+
+      alert("✅ Google Drive conectado correctamente.");
+      window.googleDriveAccessToken = response.access_token;
+    }
+  });
+
+  tokenClient.requestAccessToken();
+}
 </script>
 </body>
 </html>
