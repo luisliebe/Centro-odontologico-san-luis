@@ -1,22 +1,12 @@
 {
-  "name": "Centro Odontológico San Luis",
-  "short_name": "San Luis",
-  "description": "Aplicación para gestionar pacientes e historias clínicas del Centro Odontológico San Luis.",
-  "start_url": "./",
-  "scope": "./",
+  "background_color": "#6b5b50",
+  "dir": "ltr",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#edf2f5",
+  "name": "luisliebe.github",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "luisliebe.github",
+  "start_url": "/",
   "theme_color": "#455a64",
-  "lang": "es"
-  "icons": [
-  {
-    "src": "android-chrome-192x192.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  },
-  {
-    "src": "android-chrome-512x512.png",
-    "sizes": "512x512",
-    "type": "image/png"
+  "description": "Aplicación para la gestión de pacientes e historias clínicas del Centro Odontológico San Luis"
 }
