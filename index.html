@@ -134,5 +134,12 @@ function seleccionarRespaldo(){document.getElementById("archivoRespaldo").click(
 function restaurarRespaldo(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=function(ev){try{let datos=JSON.parse(ev.target.result);if(!Array.isArray(datos))throw new Error("Formato no válido");if(!confirm("⚠️ Restaurar este respaldo reemplazará los pacientes actuales de este celular. ¿Continuar?"))return;pacientes=datos;localStorage.setItem("pacientes",JSON.stringify(pacientes));alert("✅ Respaldo restaurado correctamente. Pacientes recuperados: "+pacientes.length);inicio()}catch(err){alert("❌ No se pudo restaurar el respaldo. Verifica que sea un archivo JSON creado por esta aplicación.")}};r.readAsText(f);e.target.value=""}
 inicio();
 </script>
+  <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./pwabuilder-sw.js');
+  });
+}
+</script>
 </body>
 </html>
