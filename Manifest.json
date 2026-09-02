@@ -1,7 +1,7 @@
 {
   "name": "Centro Odontológico San Luis",
   "short_name": "San Luis",
-  "description": "Aplicación para la gestión de pacientes e historias clínicas del Centro Odontológico San Luis"
+  "description": "Aplicación para gestionar pacientes e historias clínicas del Centro Odontológico San Luis.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
