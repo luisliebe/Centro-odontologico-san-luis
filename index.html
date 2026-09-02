@@ -150,7 +150,7 @@ let googleAccessToken = null;
 
 function conectarGoogleDrive() {
   const client = google.accounts.oauth2.initTokenClient({
-    client_id: 'https://871933422694-bn62kang02ucd14pqboj673f18bkhtlu.apps.googleusercontent.com' ,
+    client_id: '871933422694-bn62kang02ucd14pqboj673f18bkhtlu.apps.googleusercontent.com' ,
     scope: 'https://www.googleapis.com/auth/drive.file',
     callback: (response) => {
       if (response.access_token) {
