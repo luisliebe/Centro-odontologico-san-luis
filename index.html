@@ -145,5 +145,23 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+  <script>
+let googleAccessToken = null;
+
+function conectarGoogleDrive() {
+  const client = google.accounts.oauth2.initTokenClient({
+    client_id: 'PEGA_AQUI_TU_ID_DE_CLIENTE',
+    scope: 'https://www.googleapis.com/auth/drive.file',
+    callback: (response) => {
+      if (response.access_token) {
+        googleAccessToken = response.access_token;
+        alert('Google Drive conectado correctamente.');
+      }
+    }
+  });
+
+  client.requestAccessToken();
+}
+</script>
 </body>
 </html>
