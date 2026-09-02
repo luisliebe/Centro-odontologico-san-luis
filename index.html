@@ -148,20 +148,57 @@ if ('serviceWorker' in navigator) {
   <script>
 let googleAccessToken = null;
 
+<script>
+let googleAccessToken = null;
+
 function conectarGoogleDrive() {
+
+  if (!window.google || !google.accounts || !google.accounts.oauth2) {
+    alert("Google todavía no está listo. Espera unos segundos y vuelve a intentarlo.");
+    return;
+  }
+
   const client = google.accounts.oauth2.initTokenClient({
-    client_id: '871933422694-bn62kang02ucd14pqboj673f18bkhtlu.apps.googleusercontent.com' ,
+    client_id: '871933422694-bn62kang02ucd14pqboj673f18bkhtlu.apps.googleusercontent.com',
     scope: 'https://www.googleapis.com/auth/drive.file',
+
     callback: (response) => {
+
+      if (response.error) {
+        alert("Error de Google: " + response.error);
+        return;
+      }
+
       if (response.access_token) {
         googleAccessToken = response.access_token;
-        alert('Google Drive conectado correctamente.');
+
+        sessionStorage.setItem(
+          "googleAccessToken",
+          response.access_token
+        );
+
+        alert("✅ Google Drive conectado correctamente.");
+      } else {
+        alert("Google no entregó el permiso de acceso.");
       }
+    },
+
+    error_callback: (error) => {
+      alert("No se pudo abrir el inicio de sesión de Google.");
+      console.log(error);
     }
   });
 
   client.requestAccessToken();
 }
+
+window.addEventListener("load", () => {
+  const token = sessionStorage.getItem("googleAccessToken");
+
+  if (token) {
+    googleAccessToken = token;
+  }
+});
 </script>
 </body>
 </html>
