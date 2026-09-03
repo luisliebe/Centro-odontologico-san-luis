@@ -135,31 +135,263 @@ function claveCitas(){return"citas_"+document.getElementById("fechaCitas").value
 function cargarCitas(){let d=JSON.parse(localStorage.getItem(claveCitas())||"{}");document.querySelectorAll("[data-cita-hora]").forEach(i=>i.value=d[i.dataset.citaHora]?.[i.dataset.citaCampo]||"")}
 function obtenerCitasParaRespaldo(){let citasGuardadas={};for(let i=0;i<localStorage.length;i++){let k=localStorage.key(i);if(k&&k.indexOf("citas_")===0){try{citasGuardadas[k]=JSON.parse(localStorage.getItem(k)||"{}")}catch(e){}}}return citasGuardadas}
 function crearDatosRespaldo(){return{version:2,aplicacion:"Centro Odontológico San Luis",fechaRespaldo:new Date().toISOString(),pacientes:pacientes,citas:obtenerCitasParaRespaldo()}}
-function respaldo(){marcarMenu("Respaldo");let conectado=!!googleAccessToken;document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>💾 Respaldo</h2><p>Pacientes registrados: <strong>${pacientes.length}</strong></p><p id="estadoDrive" style="font-weight:bold">${conectado?"☁️ Google Drive conectado":"📱 Datos guardados en el celular"}</p><button class="boton-azul boton-completo" onclick="crearRespaldo()">📥 Crear respaldo en el celular</button><button class="boton-verde boton-completo" onclick="conectarGoogleDrive()">☁️ Conectar Google Drive</button><button class="boton-azul boton-completo" onclick="guardarEnDrive(true)">☁️ Guardar respaldo en Google Drive</button><button class="boton-gris boton-completo" onclick="restaurarDesdeDrive()">☁️ Restaurar desde Google Drive</button><button class="boton-verde boton-completo" onclick="seleccionarRespaldo()">📤 Restaurar archivo del celular</button><input type="file" id="archivoRespaldo" accept=".json,application/json" style="display:none" onchange="restaurarRespaldo(event)"></div></div>`}
+
+function respaldo(){
+marcarMenu("Respaldo");
+let conectado=!!googleAccessToken;
+document.getElementById("app").innerHTML=`<div class="contenedor"><div class="tarjeta"><h2>💾 Respaldo</h2><p>Pacientes registrados: <strong>${pacientes.length}</strong></p><p id="estadoDrive" style="font-weight:bold">${conectado?"☁️ Google Drive conectado":"📱 Datos guardados en el celular"}</p><button class="boton-azul boton-completo" onclick="crearRespaldo()">📥 Crear respaldo en el celular</button><button class="boton-verde boton-completo" onclick="conectarGoogleDrive()">☁️ Conectar Google Drive</button><button class="boton-azul boton-completo" onclick="guardarEnDrive(true)">☁️ Guardar respaldo en Google Drive</button><button class="boton-gris boton-completo" onclick="restaurarDesdeDrive()">☁️ Restaurar desde Google Drive</button><button class="boton-verde boton-completo" onclick="seleccionarRespaldo()">📤 Restaurar archivo del celular</button><input type="file" id="archivoRespaldo" accept=".json,application/json" style="display:none" onchange="restaurarRespaldo(event)"></div></div>`;
+}
+
 function crearRespaldo(){let a=document.createElement("a"),u=URL.createObjectURL(new Blob([JSON.stringify(crearDatosRespaldo(),null,2)],{type:"application/json"}));a.href=u;a.download="respaldo_centro_odontologico_san_luis.json";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u);alert("✅ Respaldo creado en el celular.")}
 function seleccionarRespaldo(){document.getElementById("archivoRespaldo")?.click()}
 function restaurarRespaldo(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=function(ev){try{restaurarDatos(JSON.parse(ev.target.result))}catch(err){alert("❌ No se pudo restaurar el respaldo.")}};r.readAsText(f);e.target.value=""}
 function restaurarDatos(datos){let lista=Array.isArray(datos)?datos:datos.pacientes;if(!Array.isArray(lista))throw new Error("Formato no válido");if(!confirm("⚠️ Restaurar este respaldo reemplazará los pacientes actuales de este celular. ¿Continuar?"))return;pacientes=lista;localStorage.setItem("pacientes",JSON.stringify(pacientes));if(datos.citas&&typeof datos.citas==="object"){Object.keys(datos.citas).forEach(k=>localStorage.setItem(k,JSON.stringify(datos.citas[k])))}alert("✅ Respaldo restaurado correctamente. Pacientes recuperados: "+pacientes.length);inicio()}
-let googleAccessToken=sessionStorage.getItem("googleAccessToken")||null;let driveFileId=sessionStorage.getItem("driveFileId")||null;let driveSyncTimer=null;const GOOGLE_CLIENT_ID="871933422694-bn62kang02ucd14pqboj673f18bkhtlu.apps.googleusercontent.com";const DRIVE_SCOPE="https://www.googleapis.com/auth/drive.file";const DRIVE_BACKUP_NAME="Centro_Odontologico_San_Luis_Backup.json";
-function programarSincronizacionDrive(){clearTimeout(driveSyncTimer);if(googleAccessToken)driveSyncTimer=setTimeout(()=>guardarEnDrive(false),1500)}
-function conectarGoogleDrive(){if(!window.google||!google.accounts||!google.accounts.oauth2){alert("Google todavía no está listo. Espera unos segundos y vuelve a intentarlo.");return}try{const client=google.accounts.oauth2.initTokenClient({client_id:GOOGLE_CLIENT_ID,scope:DRIVE_SCOPE,callback:async(response)=>{if(response.error){alert("Error de Google: "+response.error);return}if(!response.access_token){alert("Google no entregó el permiso de acceso.");return}googleAccessToken=response.access_token;sessionStorage.setItem("googleAccessToken",response.access_token);driveFileId=null;sessionStorage.removeItem("driveFileId");alert("✅ Google Drive conectado correctamente.");try{await guardarEnDrive(false)}catch(e){console.error(e)}} ,error_callback:(error)=>{console.error(error);alert("No se pudo abrir el inicio de sesión de Google.")}});client.requestAccessToken({prompt:"consent"})}catch(e){console.error(e);alert("No se pudo iniciar la conexión con Google Drive.")}}
-function driveHeaders(){return{Authorization:"Bearer "+googleAccessToken}}
-async function comprobarRespuestaDrive(r){if(r.status===401){googleAccessToken=null;driveFileId=null;sessionStorage.removeItem("googleAccessToken");sessionStorage.removeItem("driveFileId");throw new Error("La sesión de Google Drive expiró. Vuelve a conectar Google Drive.")}if(!r.ok){let t="";try{t=await r.text()}catch(e){}throw new Error("Drive HTTP "+r.status+" "+t)}}
-async function buscarArchivoDrive(){if(driveFileId)return driveFileId;let q="name='"+DRIVE_BACKUP_NAME.replace(/'/g,"\\'")+"' and trashed=false";let url="https://www.googleapis.com/drive/v3/files?q="+encodeURIComponent(q)+"&spaces=drive&fields=files(id,name,modifiedTime)&pageSize=10";let r=await fetch(url,{headers:driveHeaders()});await comprobarRespuestaDrive(r);let d=await r.json();if(d.files&&d.files.length){driveFileId=d.files[0].id;sessionStorage.setItem("driveFileId",driveFileId);return driveFileId}return null}
-function construirMultipart(datos,metadata){let boundary="-------SanLuisBoundary"+Date.now();let body="--"+boundary+"\\r\
-Content-Type: application/json; charset=UTF-8\\r\
-\\r\
-"+JSON.stringify(metadata)+"\\r\
---"+boundary+"\\r\
-Content-Type: application/json; charset=UTF-8\\r\
-\\r\
-"+JSON.stringify(datos)+"\\r\
---"+boundary+"--";return{body,contentType:"multipart/related; boundary="+boundary}}
-async function guardarEnDrive(forzar){if(!googleAccessToken){if(forzar)alert("⚠️ Primero conecta Google Drive.");return false}let datos=crearDatosRespaldo();try{let id=await buscarArchivoDrive();let metodo=id?"PATCH":"POST";let url=id?"https://www.googleapis.com/upload/drive/v3/files/"+encodeURIComponent(id)+"?uploadType=multipart":"https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart";let meta=id?{mimeType:"application/json"}:{name:DRIVE_BACKUP_NAME,mimeType:"application/json"};let mp=construirMultipart(datos,meta);let r=await fetch(url,{method:metodo,headers:{...driveHeaders(),"Content-Type":mp.contentType},body:mp.body});await comprobarRespuestaDrive(r);let out=await r.json();if(out.id){driveFileId=out.id;sessionStorage.setItem("driveFileId",out.id)}let e=document.getElementById("estadoDrive");if(e)e.textContent="☁️ Respaldo sincronizado con Google Drive";if(forzar)alert("✅ Respaldo guardado correctamente en Google Drive.");return true}catch(e){console.error(e);let el=document.getElementById("estadoDrive");if(el)el.textContent="⚠️ No se pudo sincronizar con Google Drive";if(forzar)alert("❌ No se pudo guardar en Google Drive. "+e.message);return false}}
-async function restaurarDesdeDrive(){if(!googleAccessToken){alert("⚠️ Primero conecta Google Drive.");return}try{let id=await buscarArchivoDrive();if(!id){alert("No hay todavía un respaldo de este aplicativo en Google Drive.");return}if(!confirm("⚠️ Esto reemplazará los datos actuales de este celular por el respaldo de Google Drive. ¿Continuar?"))return;let r=await fetch("https://www.googleapis.com/drive/v3/files/"+encodeURIComponent(id)+"?alt=media",{headers:driveHeaders()});await comprobarRespuestaDrive(r);let datos=await r.json();restaurarDatos(datos)}catch(e){console.error(e);alert("❌ No se pudo restaurar desde Google Drive. "+e.message)}}
-window.addEventListener("load",()=>{googleAccessToken=sessionStorage.getItem("googleAccessToken")||null;driveFileId=sessionStorage.getItem("driveFileId")||null});
+
+/* ==================== GOOGLE DRIVE ==================== */
+let googleAccessToken=sessionStorage.getItem("googleAccessToken")||null;
+let driveFileId=sessionStorage.getItem("driveFileId")||null;
+let driveSyncTimer=null;
+
+const GOOGLE_CLIENT_ID="871933422694-bn62kang02ucd14pqboj673f18bkhtlu.apps.googleusercontent.com";
+const DRIVE_SCOPE="https://www.googleapis.com/auth/drive.file";
+const DRIVE_BACKUP_NAME="Centro_Odontologico_San_Luis_Backup.json";
+
+function programarSincronizacionDrive(){
+clearTimeout(driveSyncTimer);
+if(googleAccessToken){
+driveSyncTimer=setTimeout(()=>guardarEnDrive(false),1500);
+}
+}
+
+function conectarGoogleDrive(){
+if(!window.google||!window.google.accounts||!window.google.accounts.oauth2){
+alert("Google todavía no está listo. Espera unos segundos y vuelve a intentarlo.");
+return;
+}
+
+try{
+const client=google.accounts.oauth2.initTokenClient({
+client_id:GOOGLE_CLIENT_ID,
+scope:DRIVE_SCOPE,
+callback:async(response)=>{
+console.log("Respuesta Google:",response);
+
+if(response.error){
+alert("Google no pudo autorizar el acceso: "+response.error);
+return;
+}
+
+if(!response.access_token){
+alert("Google no entregó el permiso de acceso.");
+return;
+}
+
+googleAccessToken=response.access_token;
+sessionStorage.setItem("googleAccessToken",response.access_token);
+driveFileId=null;
+sessionStorage.removeItem("driveFileId");
+
+const estado=document.getElementById("estadoDrive");
+if(estado)estado.textContent="☁️ Google Drive conectado";
+
+alert("✅ Google Drive conectado correctamente.");
+},
+error_callback:(error)=>{
+console.error("Error OAuth:",error);
+alert("No se pudo abrir el inicio de sesión de Google.");
+}
+});
+
+client.requestAccessToken({prompt:"consent"});
+}catch(error){
+console.error("Error iniciando Google:",error);
+alert("No se pudo iniciar la conexión con Google Drive.");
+}
+}
+
+function driveHeaders(){
+return{
+"Authorization":"Bearer "+googleAccessToken
+};
+}
+
+async function comprobarRespuestaDrive(r){
+if(r.status===401){
+googleAccessToken=null;
+driveFileId=null;
+sessionStorage.removeItem("googleAccessToken");
+sessionStorage.removeItem("driveFileId");
+throw new Error("La sesión de Google Drive expiró. Vuelve a conectar Google Drive.");
+}
+
+if(!r.ok){
+let texto="";
+try{texto=await r.text()}catch(e){}
+throw new Error("Drive HTTP "+r.status+" "+texto);
+}
+}
+
+async function buscarArchivoDrive(){
+if(driveFileId)return driveFileId;
+
+const consulta="name='"+DRIVE_BACKUP_NAME.replace(/'/g,"\\'")+"' and trashed=false";
+
+const url="https://www.googleapis.com/drive/v3/files?q="+encodeURIComponent(consulta)+"&spaces=drive&fields=files(id,name,modifiedTime)&pageSize=10";
+
+const respuesta=await fetch(url,{
+method:"GET",
+headers:driveHeaders()
+});
+
+await comprobarRespuestaDrive(respuesta);
+
+const datos=await respuesta.json();
+
+if(datos.files&&datos.files.length>0){
+driveFileId=datos.files[0].id;
+sessionStorage.setItem("driveFileId",driveFileId);
+return driveFileId;
+}
+
+return null;
+}
+
+function construirMultipart(datos,metadata){
+const boundary="SanLuisBoundary"+Date.now();
+
+const cuerpo=
+"--"+boundary+"\r\n"+
+"Content-Type: application/json; charset=UTF-8\r\n"+
+"\r\n"+
+JSON.stringify(metadata)+
+"\r\n"+
+"--"+boundary+"\r\n"+
+"Content-Type: application/json; charset=UTF-8\r\n"+
+"\r\n"+
+JSON.stringify(datos)+
+"\r\n"+
+"--"+boundary+"--\r\n";
+
+return{
+body:cuerpo,
+contentType:"multipart/related; boundary="+boundary
+};
+}
+
+async function guardarEnDrive(forzar){
+if(!googleAccessToken){
+if(forzar)alert("⚠️ Primero conecta Google Drive.");
+return false;
+}
+
+const datos=crearDatosRespaldo();
+
+try{
+const id=await buscarArchivoDrive();
+
+let metodo;
+let url;
+let metadata;
+
+if(id){
+metodo="PATCH";
+url="https://www.googleapis.com/upload/drive/v3/files/"+encodeURIComponent(id)+"?uploadType=multipart";
+metadata={mimeType:"application/json"};
+}else{
+metodo="POST";
+url="https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart";
+metadata={name:DRIVE_BACKUP_NAME,mimeType:"application/json"};
+}
+
+const multipart=construirMultipart(datos,metadata);
+
+const respuesta=await fetch(url,{
+method:metodo,
+headers:{
+...driveHeaders(),
+"Content-Type":multipart.contentType
+},
+body:multipart.body
+});
+
+await comprobarRespuestaDrive(respuesta);
+
+const resultado=await respuesta.json();
+
+if(resultado.id){
+driveFileId=resultado.id;
+sessionStorage.setItem("driveFileId",resultado.id);
+}
+
+const estado=document.getElementById("estadoDrive");
+if(estado)estado.textContent="☁️ Respaldo sincronizado con Google Drive";
+
+if(forzar)alert("✅ Respaldo guardado correctamente en Google Drive.");
+
+return true;
+
+}catch(error){
+console.error("Error guardando en Google Drive:",error);
+
+const estado=document.getElementById("estadoDrive");
+if(estado)estado.textContent="⚠️ No se pudo sincronizar con Google Drive";
+
+if(forzar){
+alert("❌ No se pudo guardar en Google Drive.\n\n"+error.message);
+}
+
+return false;
+}
+}
+
+async function restaurarDesdeDrive(){
+if(!googleAccessToken){
+alert("⚠️ Primero conecta Google Drive.");
+return;
+}
+
+try{
+const id=await buscarArchivoDrive();
+
+if(!id){
+alert("No hay todavía un respaldo de este aplicativo en Google Drive.");
+return;
+}
+
+if(!confirm("⚠️ Esto reemplazará los datos actuales de este celular por el respaldo de Google Drive. ¿Continuar?"))return;
+
+const respuesta=await fetch(
+"https://www.googleapis.com/drive/v3/files/"+encodeURIComponent(id)+"?alt=media",
+{
+method:"GET",
+headers:driveHeaders()
+}
+);
+
+await comprobarRespuestaDrive(respuesta);
+
+const datos=await respuesta.json();
+restaurarDatos(datos);
+
+}catch(error){
+console.error("Error restaurando desde Google Drive:",error);
+alert("❌ No se pudo restaurar desde Google Drive.\n\n"+error.message);
+}
+}
+
+window.addEventListener("load",()=>{
+googleAccessToken=sessionStorage.getItem("googleAccessToken")||null;
+driveFileId=sessionStorage.getItem("driveFileId")||null;
+});
+
 inicio();
 </script>
-<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./pwabuilder-sw.js").catch(()=>{}))}</script>
+<script>
+if("serviceWorker" in navigator){
+window.addEventListener("load",()=>{
+navigator.serviceWorker.register("./pwabuilder-sw.js").catch(()=>{});
+});
+}
+</script>
 </body>
 </html>
